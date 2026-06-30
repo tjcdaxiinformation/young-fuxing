@@ -8,8 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts for premium Typography: Added Dela Gothic One for Anime Style Poster Title -->
-  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+  <!-- Google Fonts for premium Typography: Reverted to Noto Serif for classic first edition look -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
   
   <style>
     body {
@@ -54,31 +54,23 @@
     }
 
     /* =========================================================
-      HIGH-END TYPOGRAPHY RENDERING (Prevents Stroke Distortion)
+      CLASSIC FIRST EDITION TYPOGRAPHY STYLE (Beautiful Noto Serif)
       =========================================================
     */
     .poster-title-style {
-      font-family: 'Dela Gothic One', 'Noto Sans TC', sans-serif;
-      /* Glowing sunrise metallic gradient */
-      background: linear-gradient(to bottom, #ffffff 10%, #fef08a 45%, #f97316 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      /* Bold Outline rendered behind the font fill to preserve characters shape */
-      -webkit-text-stroke: 10px #000000;
-      paint-order: stroke fill;
-      stroke-linejoin: round;
-      filter: drop-shadow(4px 5px 0px #000000);
+      font-family: 'Noto Serif TC', serif;
+      font-weight: 900;
+      color: #fde047; /* yellow-300 */
+      -webkit-text-stroke: 2.5px #000000;
+      text-shadow: 4px 4px 0px #000000;
     }
 
     .poster-subtitle-style {
-      font-family: 'Dela Gothic One', 'Noto Sans TC', sans-serif;
-      background: linear-gradient(to bottom, #ffffff 20%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      -webkit-text-stroke: 6px #000000;
-      paint-order: stroke fill;
-      stroke-linejoin: round;
-      filter: drop-shadow(3px 3px 0px #000000);
+      font-family: 'Noto Sans TC', sans-serif;
+      font-weight: 900;
+      color: #ffffff;
+      -webkit-text-stroke: 1.5px #000000;
+      text-shadow: 2.5px 2.5px 0px #000000;
     }
 
     /* Smooth rounded stroke for standard stroked texts */
@@ -97,12 +89,12 @@
     <!-- Left Column: Controls & Settings Panel (Hidden on Print) -->
     <div class="lg:col-span-4 bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 text-white space-y-6 no-print shadow-xl">
       <div class="border-b border-slate-700 pb-4">
-        <span class="bg-rose-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2.1</span>
+        <span class="bg-emerald-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2.2</span>
         <h1 class="text-xl font-black mt-2 flex items-center gap-2">
           <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> 海報即時客製面板
         </h1>
         <p class="text-xs text-slate-400 mt-1">
-          已成功升級**「高階動漫風極厚字體」**搭配**底層描邊渲染技術**，字體絕對立體飽滿、不破碎！
+          已成功還原第一版**「經典優雅明體標題」**，並搭載高朝氣、穿著潮流福音鞋的漫畫風青少年勇士！
         </p>
       </div>
 
@@ -125,7 +117,7 @@
       <!-- Live Input Fields -->
       <div class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">主標題 (支援中文大字)</label>
+          <label class="block text-xs font-bold text-slate-300 mb-1">主標題</label>
           <input type="text" id="input-title" oninput="updatePosterText()" value="復興～福音的勇士" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
         </div>
         <div>
@@ -205,7 +197,7 @@
             ⛪ 真耶穌教會復興小區 ── 115年青少年福音營 🛡️
           </div>
           
-          <!-- Master Title styled with modern thick Dela Gothic & perfect back-stroke -->
+          <!-- Master Title Restored to Classic Noto Serif Style with precise thin stroke -->
           <h1 id="poster-title" class="poster-title-style text-4xl md:text-5xl font-extrabold tracking-tight py-2">
             復興～福音的勇士
           </h1>
@@ -217,11 +209,11 @@
           <div class="w-48 h-1 bg-amber-400 mx-auto rounded-full my-1.5 border border-black shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"></div>
           
           <span class="inline-block bg-indigo-900 border-2 border-black text-yellow-300 font-extrabold text-xs md:text-sm px-4 py-1 rounded-md rotate-[-1.5deg] shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            🔥 穿戴上帝所賜的全副屬靈軍裝，做基督的精兵！
+            🔥 穿戴神所賜的全副屬靈軍裝，做基督的精兵！
           </span>
         </div>
 
-        <!-- Central Illustration Container (Dynamically updated to be incredibly lively & teenage styled) -->
+        <!-- Central Illustration Container (Lively teenage styled cartoon character) -->
         <div class="my-3 relative flex items-center justify-center flex-1 min-h-[300px]">
           
           <!-- Highly polished, active teenage-styled Vector SVG Illustration -->
@@ -255,14 +247,14 @@
               <rect x="25" y="45" width="95" height="45" fill="#92400E" stroke="#000" stroke-width="1.5" rx="3"/>
               <!-- Straw triangular roof -->
               <polygon points="10,50 72,10 135,50" fill="#D97706" stroke="#000" stroke-width="2"/>
-              <!-- Indigenous colorful geometric patterns (紅/黃/黑/白) -->
+              <!-- Indigenous colorful geometric patterns -->
               <rect x="35" y="58" width="75" height="8" fill="#DC2626" rx="1"/>
               <polygon points="40,66 50,58 60,66 70,58 80,66 90,58 100,66" fill="#FFF"/>
               <!-- Door/Window -->
               <rect x="62" y="68" width="18" height="22" fill="#451A03" rx="1"/>
               <!-- Label Tag -->
               <rect x="30" y="115" width="85" height="16" fill="#F59E0B" stroke="#000" stroke-width="1" rx="3"/>
-              <text x="72" y="127" fill="#000" font-size="9" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">原鄉部落高腳屋</text>
+              <text x="72" y="127" fill="#000" font-size="9" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">原鄉部落我的家</text>
             </g>
 
             <!-- RIGHT SIDE BACKGROUND: Modern Chapel with Steeple (現代十字架會堂) -->
@@ -281,12 +273,12 @@
               <path d="M76 95 A 8 8 0 0 1 92 95 L 92 120 L 76 120 Z" fill="#FDE047" stroke="#000" stroke-width="1.2"/>
               <!-- Label Tag -->
               <rect x="5" y="130" width="80" height="16" fill="#3B82F6" stroke="#000" stroke-width="1" rx="3"/>
-              <text x="45" y="142" fill="#FFF" font-size="9" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">現代福音會堂</text>
+              <text x="45" y="142" fill="#FFF" font-size="9" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">主耶穌的家也是我家</text>
             </g>
 
             <!-- CENTER: Super Dynamic & Cool Teenage Gospel Warrior (具有活力的潮流基督青少年) -->
             <g id="warrior-teen" transform="translate(250, 215)">
-              <!-- Back Cape (飄逸的紅色勇士披風) -->
+              <!-- Back Cape -->
               <path d="M-25 -5 L-95 105 L95 105 L25 -5 Z" fill="#DC2626" stroke="#000" stroke-width="2.5"/>
               <!-- Cape folds for depth -->
               <path d="M-25 -5 L-55 105 L-20 105 Z" fill="#991B1B" />
@@ -295,20 +287,20 @@
               <!-- Legs in modern athletic jeans -->
               <rect x="-18" y="55" width="12" height="60" fill="#2563EB" stroke="#000" stroke-width="2"/>
               <rect x="6" y="55" width="12" height="60" fill="#2563EB" stroke="#000" stroke-width="2"/>
-              <!-- Kneepads (活動防護) -->
+              <!-- Kneepads -->
               <rect x="-19" y="75" width="14" height="14" fill="#1E293B" stroke="#000" stroke-width="1.5" rx="3"/>
               <rect x="5" y="75" width="14" height="14" fill="#1E293B" stroke="#000" stroke-width="1.5" rx="3"/>
 
-              <!-- SNEAKERS: High-top "Gospel Shoes" (超有朝氣的潮流福音高筒鞋，呼應第一張圖活力感) -->
+              <!-- SNEAKERS: High-top "Gospel Shoes" -->
               <!-- Left Sneaker -->
               <g transform="translate(-20, 110)">
-                <!-- Sole / Midsole (白橘配) -->
+                <!-- Sole / Midsole -->
                 <path d="M-18 20 L8 20 L8 32 L-22 32 Z" fill="#FFF" stroke="#000" stroke-width="2"/>
                 <path d="M-16 28 L6 28 L6 32 L-18 32 Z" fill="#EA580C" />
-                <!-- High-top body (藍色皮革搭配白勾與白鞋帶) -->
+                <!-- High-top body -->
                 <path d="M-18 0 C-18 0 8 5 8 20 L-18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
-                <path d="M-16 4 Q-6 6 -2 18" stroke="#FFF" stroke-width="2.5" fill="none"/> <!-- Swoosh style line -->
-                <path d="M-10 10 L4 10 M-8 14 L2 14" stroke="#FFF" stroke-width="1.5"/> <!-- Laces -->
+                <path d="M-16 4 Q-6 6 -2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
+                <path d="M-10 10 L4 10 M-8 14 L2 14" stroke="#FFF" stroke-width="1.5"/>
               </g>
               <!-- Right Sneaker -->
               <g transform="translate(6, 110)">
@@ -317,73 +309,62 @@
                 <path d="M-6 28 L16 28 L18 32 L-6 32 Z" fill="#EA580C" />
                 <!-- High-top body -->
                 <path d="M18 0 C18 0 -8 5 -8 20 L18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
-                <path d="M16 4 Q6 6 2 18" stroke="#FFF" stroke-width="2.5" fill="none"/> <!-- Swoosh style line -->
-                <path d="M10 10 L-4 10 M8 14 L-2 14" stroke="#FFF" stroke-width="1.5"/> <!-- Laces -->
+                <path d="M16 4 Q6 6 2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
+                <path d="M10 10 L-4 10 M8 14 L-2 14" stroke="#FFF" stroke-width="1.5"/>
               </g>
 
-              <!-- Torso Armour: Breastplate (公義的胸甲) & Belt of Truth (真理的腰帶) -->
-              <!-- Underlying cool blue athletic shirt -->
+              <!-- Torso Armour: Breastplate & Belt of Truth -->
               <rect x="-24" y="-10" width="48" height="65" fill="#38BDF8" stroke="#000" stroke-width="2" rx="4"/>
-              <!-- Breastplate (亮銀色護甲) -->
+              <!-- Breastplate -->
               <path d="M-22 -8 L22 -8 L18 45 L-18 45 Z" fill="#CBD5E1" stroke="#000" stroke-width="2"/>
-              <!-- Muscle definition on armor for athletic looks -->
+              <!-- Muscle definition on armor -->
               <path d="M-10 10 L-10 30 M10 10 L10 30" stroke="#94A3B8" stroke-width="2"/>
               <path d="M-8 35 Q0 38 8 35" stroke="#94A3B8" stroke-width="2" fill="none"/>
-              <!-- Belt of Truth (真理腰帶) with golden buckle -->
+              <!-- Belt of Truth -->
               <rect x="-25" y="45" width="50" height="11" fill="#78350F" stroke="#000" stroke-width="2"/>
               <rect x="-7" y="42" width="14" height="17" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
 
-              <!-- Head, Stylish Hair and Helmet of Salvation (救恩的頭盔) -->
+              <!-- Head, Stylish Hair and Helmet of Salvation -->
               <!-- Skin -->
               <circle cx="0" cy="-35" r="23" fill="#FDBA74" stroke="#000" stroke-width="2"/>
-              <!-- Energetic Anime Eyes (有神的大眼睛，代表少年的活力) -->
+              <!-- Energetic Anime Eyes -->
               <ellipse cx="-8" cy="-37" rx="3.5" ry="5.5" fill="#000"/>
               <ellipse cx="8" cy="-37" rx="3.5" ry="5.5" fill="#000"/>
-              <!-- Eye highlights -->
               <circle cx="-9" cy="-39" r="1.5" fill="#FFF"/>
               <circle cx="7" cy="-39" r="1.5" fill="#FFF"/>
               <!-- Determined smiling mouth -->
               <path d="M-7 -25 Q0 -18 7 -25" stroke="#000" stroke-width="3" fill="none"/>
               
-              <!-- Trendy Spiky Hair (露出頭盔邊緣的深色帥氣短髮) -->
+              <!-- Trendy Spiky Hair -->
               <path d="M-22 -35 L-27 -25 L-15 -30 L-20 -15 L-8 -26 L0 -15 L8 -26 L20 -15 L15 -30 L27 -25 L22 -35 Z" fill="#1E293B" stroke="#000" stroke-width="1.5"/>
               <path d="M-15 -52 L-24 -40 L-10 -46 L-4 -38 L4 -38 L10 -46 L24 -40 L15 -52 Z" fill="#1E293B"/>
 
-              <!-- Helmet of Salvation (救恩的頭盔) with tilted-back dynamic angle -->
+              <!-- Helmet of Salvation -->
               <path d="M-24 -44 C-24 -75 24 -75 24 -44 Z" fill="#94A3B8" stroke="#000" stroke-width="2"/>
               <path d="M-24 -44 L24 -44 L0 -33 Z" fill="#475569" stroke="#000" stroke-width="2"/>
-              <!-- Red plume/feather crest (頭盔紅纓，增加威武感) -->
+              <!-- Red plume/feather crest -->
               <path d="M-6 -70 Q0 -95 24 -90 Q12 -72 -2 -70" fill="#EF4444" stroke="#000" stroke-width="1.5"/>
 
-              <!-- LEFT HAND holding Shield of Faith (信心盾牌，帶有大型信心立體字與十字架) -->
-              <!-- Arm -->
+              <!-- LEFT HAND holding Shield of Faith -->
               <rect x="20" y="5" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(20 20 5)"/>
-              <!-- Shield structure -->
               <g transform="translate(52, 5)">
                 <path d="M-35 -40 L35 -40 C35 -40 35 25 0 60 C-35 25 -35 -40 -35 -40 Z" fill="#D97706" stroke="#000" stroke-width="3.5"/>
                 <path d="M-27 -34 L27 -34 C27 -34 27 18 0 49 C-27 18 -27 -34 -27 -34 Z" fill="#FDE047" stroke="#000" stroke-width="2"/>
-                <!-- Spiritual Cross behind text -->
                 <line x1="0" y1="-30" x2="0" y2="40" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
                 <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
-                <!-- Bold "信心" Gold/Black Text -->
+                <!-- Classic "信心" Character Font styled as standard outline -->
                 <text x="0" y="-11" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-clean">信</text>
                 <text x="0" y="9" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-clean">心</text>
               </g>
 
-              <!-- RIGHT HAND holding Sword of the Spirit (聖靈的劍，閃爍藍色光輝與雷電粒子) -->
-              <!-- Arm -->
+              <!-- RIGHT HAND holding Sword of the Spirit -->
               <rect x="-40" y="5" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(-20 -40 5)"/>
-              <!-- The Sword -->
               <g transform="translate(-52, 0) rotate(-30)">
-                <!-- Guard -->
                 <rect x="-14" y="-4" width="28" height="8" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
-                <!-- Hilt -->
                 <rect x="-4" y="4" width="8" height="20" fill="#78350F" stroke="#000" stroke-width="2"/>
                 <circle cx="0" cy="24" r="5" fill="#F59E0B" stroke="#000" stroke-width="1.5"/>
-                <!-- Blade with energy aura -->
                 <polygon points="-5,-4 -4,-125 0,-140 4,-125 5,-4" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2.5"/>
                 <line x1="0" y1="-4" x2="0" y2="-130" stroke="#38BDF8" stroke-width="2"/>
-                <!-- Sparks (活力小星星/粒子) -->
                 <polygon points="-15,-80 -12,-85 -18,-90 -12,-95 -15,-100 -8,-92" fill="#38BDF8" opacity="0.8"/>
                 <circle cx="15" cy="-60" r="3" fill="#0284C7" />
                 <circle cx="-12" cy="-40" r="2" fill="#0284C7" />
@@ -462,7 +443,7 @@
               <h4 class="text-xs font-black text-slate-500 uppercase tracking-wider">報名期限 / DEADLINE</h4>
               <p id="poster-deadline" class="text-base font-black text-rose-600 mt-0.5">7月11日 (五) 截止</p>
               <div class="mt-1 bg-rose-50 text-rose-800 text-[10px] font-bold p-1 rounded border border-rose-200">
-                ⚠️ 請向各教會或輔導員索取報名表
+                ⚠️ 請向各教會教育股或宣道報名
               </div>
             </div>
           </div>
@@ -471,7 +452,7 @@
 
         <!-- Micro-footer inside the poster to highlight target -->
         <div class="text-center text-[10px] font-bold text-white/80 relative z-10 mt-3 border-t border-white/10 pt-2 flex justify-between items-center">
-          <span>主辦單位：真耶穌教會復興小區輔導組</span>
+          <span>主辦單位：真耶穌教會復興小區工作小組</span>
           <span class="bg-black/20 px-2 py-0.5 rounded">TJC Fuxing Youth 115</span>
         </div>
 
@@ -567,7 +548,7 @@
       // Gather current data to build the ultimate descriptive prompt
       const title = document.getElementById('input-title').value;
 
-      const promptText = `A premium, vibrant anime key visual for a Christian youth camp poster titled "${title}". A courageous, handsome teenage Taiwanese warrior standing confidently, wearing gleaming silver spiritual armor of God (breastplate, salvation helmet, red cape), holding a beautifully glowing celestial sword and a golden shield with the Chinese characters "信心" beautifully and legibly written on the shield. The background features a dramatic split-screen composition: on the left, an indigenous Taiwanese stilt-house (高腳屋) on wooden stilts with tribal elements, and on the right, a sleek, modern Christian chapel with a glowing steeple and a tall cross under a brilliant sky with dynamic light rays. Outstanding detail, high resolution, modern layout suitable for a promotional poster banner.`;
+      const promptText = `A premium, vibrant anime key visual for a Christian youth camp poster titled "${title}". A courageous, handsome Taiwanese teenage warrior standing confidently, wearing gleaming silver spiritual armor of God (breastplate, salvation helmet, red cape), holding a beautifully glowing celestial sword and a golden shield with the Chinese characters "信心" beautifully and legibly written on the shield. The background features a dramatic split-screen composition: on the left, an indigenous Taiwanese stilt-house (高腳屋) on wooden stilts with tribal elements, and on the right, a sleek, modern Christian chapel with a glowing steeple and a tall cross under a brilliant sky with dynamic light rays. Outstanding detail, high resolution, modern layout suitable for a promotional poster banner.`;
 
       // UI state update
       generateBtn.disabled = true;
