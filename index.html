@@ -8,8 +8,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- Google Fonts for premium Typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+  <!-- Google Fonts for premium Typography: Added Dela Gothic One for Anime Style Poster Title -->
+  <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
   
   <style>
     body {
@@ -53,15 +53,39 @@
       }
     }
 
-    /* Premium Text Outlines for Neo-Brutalism Poster Title */
-    .text-stroke-black {
-      -webkit-text-stroke: 2px #000000;
+    /* =========================================================
+      HIGH-END TYPOGRAPHY RENDERING (Prevents Stroke Distortion)
+      =========================================================
+    */
+    .poster-title-style {
+      font-family: 'Dela Gothic One', 'Noto Sans TC', sans-serif;
+      /* Glowing sunrise metallic gradient */
+      background: linear-gradient(to bottom, #ffffff 10%, #fef08a 45%, #f97316 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      /* Bold Outline rendered behind the font fill to preserve characters shape */
+      -webkit-text-stroke: 10px #000000;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
+      filter: drop-shadow(4px 5px 0px #000000);
     }
-    .text-shadow-hero {
-      text-shadow: 4px 4px 0px #000000;
+
+    .poster-subtitle-style {
+      font-family: 'Dela Gothic One', 'Noto Sans TC', sans-serif;
+      background: linear-gradient(to bottom, #ffffff 20%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-text-stroke: 6px #000000;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
+      filter: drop-shadow(3px 3px 0px #000000);
     }
-    .text-shadow-sub {
-      text-shadow: 2px 2px 0px #000000;
+
+    /* Smooth rounded stroke for standard stroked texts */
+    .text-stroke-clean {
+      -webkit-text-stroke: 3px #000000;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
     }
   </style>
 </head>
@@ -73,12 +97,12 @@
     <!-- Left Column: Controls & Settings Panel (Hidden on Print) -->
     <div class="lg:col-span-4 bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 text-white space-y-6 no-print shadow-xl">
       <div class="border-b border-slate-700 pb-4">
-        <span class="bg-rose-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2</span>
+        <span class="bg-rose-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2.1</span>
         <h1 class="text-xl font-black mt-2 flex items-center gap-2">
           <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> 海報即時客製面板
         </h1>
         <p class="text-xs text-slate-400 mt-1">
-          已為您換上「更有活力、穿著潮鞋」的熱血青少年福音勇士！您可在下方修改文字細節，海報會即時同步。
+          已成功升級**「高階動漫風極厚字體」**搭配**底層描邊渲染技術**，字體絕對立體飽滿、不破碎！
         </p>
       </div>
 
@@ -101,7 +125,7 @@
       <!-- Live Input Fields -->
       <div class="space-y-4">
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">主標題</label>
+          <label class="block text-xs font-bold text-slate-300 mb-1">主標題 (支援中文大字)</label>
           <input type="text" id="input-title" oninput="updatePosterText()" value="復興～福音的勇士" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-400">
         </div>
         <div>
@@ -181,11 +205,12 @@
             ⛪ 真耶穌教會復興小區 ── 115年青少年福音營 🛡️
           </div>
           
-          <h1 id="poster-title" class="text-4xl md:text-5xl font-extrabold tracking-tight text-yellow-300 text-stroke-black text-shadow-hero font-serif" style="font-family: 'Noto Serif TC', serif; font-weight: 900;">
+          <!-- Master Title styled with modern thick Dela Gothic & perfect back-stroke -->
+          <h1 id="poster-title" class="poster-title-style text-4xl md:text-5xl font-extrabold tracking-tight py-2">
             復興～福音的勇士
           </h1>
           
-          <p id="poster-subtitle" class="text-lg md:text-xl font-black text-white tracking-wider text-stroke-black text-shadow-sub uppercase">
+          <p id="poster-subtitle" class="poster-subtitle-style text-lg md:text-xl font-black tracking-wider uppercase">
             Fuxing ~ Gospel Warriors!
           </p>
 
@@ -338,11 +363,11 @@
                 <path d="M-35 -40 L35 -40 C35 -40 35 25 0 60 C-35 25 -35 -40 -35 -40 Z" fill="#D97706" stroke="#000" stroke-width="3.5"/>
                 <path d="M-27 -34 L27 -34 C27 -34 27 18 0 49 C-27 18 -27 -34 -27 -34 Z" fill="#FDE047" stroke="#000" stroke-width="2"/>
                 <!-- Spiritual Cross behind text -->
-                <line x1="0" y1="-30" x2="0" y2="40" stroke="#EA580C" stroke-width="3.5" opacity="0.4"/>
-                <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#EA580C" stroke-width="3.5" opacity="0.4"/>
+                <line x1="0" y1="-30" x2="0" y2="40" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
+                <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
                 <!-- Bold "信心" Gold/Black Text -->
-                <text x="0" y="-11" fill="#000" font-size="17" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-black">信</text>
-                <text x="0" y="9" fill="#000" font-size="17" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-black">心</text>
+                <text x="0" y="-11" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-clean">信</text>
+                <text x="0" y="9" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC, Noto Sans TC" class="text-stroke-clean">心</text>
               </g>
 
               <!-- RIGHT HAND holding Sword of the Spirit (聖靈的劍，閃爍藍色光輝與雷電粒子) -->
