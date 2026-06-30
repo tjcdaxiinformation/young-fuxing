@@ -89,12 +89,12 @@
     <!-- Left Column: Controls & Settings Panel (Hidden on Print) -->
     <div class="lg:col-span-4 bg-slate-800 border-2 border-slate-700 rounded-2xl p-6 text-white space-y-6 no-print shadow-xl">
       <div class="border-b border-slate-700 pb-4">
-        <span class="bg-emerald-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2.2</span>
+        <span class="bg-emerald-500 text-white text-xs font-black px-2.5 py-1 rounded-full uppercase tracking-wider">Poster Builder v2.3</span>
         <h1 class="text-xl font-black mt-2 flex items-center gap-2">
           <i class="fa-solid fa-wand-magic-sparkles text-amber-400"></i> 海報即時客製面板
         </h1>
         <p class="text-xs text-slate-400 mt-1">
-          已成功還原第一版**「經典優雅明體標題」**，並搭載高朝氣、穿著潮流福音鞋的漫畫風青少年勇士！
+          已成功將所有 AI 與 API 功能完全移除。您可以直接在下方修改文字細節，海報會即時同步！
         </p>
       </div>
 
@@ -158,25 +158,6 @@
         <p class="text-[10px] text-center text-slate-400">
           💡 擷取提示：直接按 Command + P，將目的地設為「儲存為 PDF」即可獲得無損海報檔案！
         </p>
-      </div>
-
-      <!-- Advanced AI Poster Generator Box -->
-      <div class="mt-4 p-4 bg-slate-900/80 border-2 border-indigo-500/50 rounded-xl space-y-3">
-        <h3 class="text-xs font-black text-indigo-400 flex items-center gap-1">
-          <i class="fa-solid fa-robot animate-bounce"></i> 備用 AI 繪圖生成器
-        </h3>
-        <p class="text-[11px] text-slate-400">
-          若有從 Google AI Studio 申請到的免費 API Key，貼在下方即可生成超擬真精美動漫大作：
-        </p>
-        <div class="space-y-2">
-          <input type="text" id="api-key-input" placeholder="貼上 AIzaSy 開頭的 API 金鑰" class="w-full bg-slate-950 border border-slate-800 rounded px-2.5 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500">
-          <button onclick="triggerAIGeneration()" id="ai-gen-btn" class="w-full bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 rounded text-xs transition-all flex items-center justify-center gap-1.5">
-            <i class="fa-solid fa-image"></i> 生成全新 AI 勇士插畫
-          </button>
-        </div>
-        <div id="ai-loading" class="hidden text-[10px] text-amber-400 text-center animate-pulse">
-          ⚡ 正在使用 imagen-4.0-generate-001 繪製最新高畫質福音勇士中...
-        </div>
       </div>
 
     </div>
@@ -373,16 +354,6 @@
             </g>
           </svg>
 
-          <!-- Dynamic Container for Generated AI Base64 Image (Hidden by default, shown once generated) -->
-          <div id="ai-image-wrapper" class="hidden absolute inset-0 z-20 flex items-center justify-center p-2">
-            <div class="w-full h-full rounded-xl border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] bg-slate-900 overflow-hidden relative">
-              <img id="ai-generated-image" class="w-full h-full object-cover" src="" alt="AI Generated Fuxing Warrior">
-              <button onclick="removeAIImage()" class="no-print absolute top-2 right-2 bg-rose-600 text-white font-black text-xs px-3 py-1.5 rounded-md border-2 border-black hover:bg-rose-500 shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]">
-                <i class="fa-solid fa-trash-can"></i> 回復內建向量圖
-              </button>
-            </div>
-          </div>
-
         </div>
 
         <!-- Middle Section: Camp Features (Aboriginal & Modern Youth Unity tags) -->
@@ -532,87 +503,6 @@
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
       }, 3000);
-    }
-
-    // Dynamic AI Image Generator Logic utilizing standard Gemini predict endpoint
-    async function triggerAIGeneration() {
-      const apiKey = document.getElementById('api-key-input').value.trim();
-      const generateBtn = document.getElementById('ai-gen-btn');
-      const loadingIndicator = document.getElementById('ai-loading');
-
-      if (!apiKey) {
-        showToast("請輸入您的 Gemini API Key 來啟用 AI 繪圖生成！", "⚠️");
-        return;
-      }
-
-      // Gather current data to build the ultimate descriptive prompt
-      const title = document.getElementById('input-title').value;
-
-      const promptText = `A premium, vibrant anime key visual for a Christian youth camp poster titled "${title}". A courageous, handsome Taiwanese teenage warrior standing confidently, wearing gleaming silver spiritual armor of God (breastplate, salvation helmet, red cape), holding a beautifully glowing celestial sword and a golden shield with the Chinese characters "信心" beautifully and legibly written on the shield. The background features a dramatic split-screen composition: on the left, an indigenous Taiwanese stilt-house (高腳屋) on wooden stilts with tribal elements, and on the right, a sleek, modern Christian chapel with a glowing steeple and a tall cross under a brilliant sky with dynamic light rays. Outstanding detail, high resolution, modern layout suitable for a promotional poster banner.`;
-
-      // UI state update
-      generateBtn.disabled = true;
-      generateBtn.classList.add('opacity-50', 'cursor-not-allowed');
-      loadingIndicator.classList.remove('hidden');
-
-      // Exponential backoff logic for Gemini API calls
-      const maxRetries = 5;
-      let attempt = 0;
-      let success = false;
-      let resultData = null;
-
-      while (attempt < maxRetries && !success) {
-        try {
-          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=${apiKey}`, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-              instances: [
-                { prompt: promptText }
-              ],
-              parameters: {
-                sampleCount: 1,
-                aspectRatio: "3:4"
-              }
-            })
-          });
-
-          if (response.ok) {
-            resultData = await response.json();
-            success = true;
-          } else {
-            throw new Error(`API Status ${response.status}`);
-          }
-        } catch (error) {
-          attempt++;
-          const delay = Math.pow(2, attempt) * 1000;
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-      }
-
-      // Reset Button State
-      generateBtn.disabled = false;
-      generateBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-      loadingIndicator.classList.add('hidden');
-
-      if (success && resultData && resultData.predictions && resultData.predictions[0]) {
-        const imageUrl = `data:image/png;base64,${resultData.predictions[0].bytesBase64Encoded}`;
-        
-        // Show the wrapper and assign base64 image
-        document.getElementById('ai-image-wrapper').classList.remove('hidden');
-        document.getElementById('ai-generated-image').src = imageUrl;
-        showToast("🎨 AI 繪圖插畫生成成功！已置換至海報中央！", "🎨");
-      } else {
-        showToast("AI 繪圖連線失敗，請檢查金鑰或網路，並重試。", "❌");
-      }
-    }
-
-    function removeAIImage() {
-      document.getElementById('ai-image-wrapper').classList.add('hidden');
-      document.getElementById('ai-generated-image').src = "";
-      showToast("已重置為預設高畫質向量插圖。", "↩️");
     }
   </script>
 </body>
