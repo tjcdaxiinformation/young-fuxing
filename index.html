@@ -3,340 +3,758 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>復興福音的勇士 - 宣傳海報</title>
+  <title>【公佈欄大字版】115年青少年福音營課程表 - 福音的勇士</title>
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background-color: #0f172a;
-      margin: 0;
-      padding: 0;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background-color: #f8fafc; /* Crisp clean gallery-like background */
     }
-    
-    /* A4 海報畫布黃金比例 (1 : 1.414) */
-    .a4-poster-canvas {
-      width: 100%;
-      max-width: 540px;
-      aspect-ratio: 1 / 1.52;
-      background: linear-gradient(to bottom, #38bdf8 0%, #60a5fa 45%, #4338ca 100%);
+
+    /* Strict alignment table styles */
+    .timetable-grid {
+      border: 3px solid #0f172a;
+      box-shadow: 6px 6px 0px 0px #0f172a;
+    }
+
+    /* Neon Accent highlights */
+    .highlight-active-row {
+      background-color: #fef08a !important; /* Amber yellow spotlight */
+      border-top: 3px solid #e11d48 !important;
+      border-bottom: 3px solid #e11d48 !important;
       position: relative;
-      overflow: hidden;
-      border: 4px solid #000000;
-      border-radius: 24px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 10px 10px 0px #000000;
     }
 
-    /* 列印專用 A4 適配 (Cmd + P) */
+    /* Pulse animation for current active event */
+    .pulse-dot {
+      animation: pulse 1.5s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.15); }
+    }
+
+    /* Print settings for poster board */
     @media print {
-      body { background: white !important; padding: 0 !important; margin: 0 !important; }
-      .no-print { display: none !important; }
-      .a4-poster-canvas {
-        box-shadow: none !important;
-        border-radius: 0 !important;
-        border: none !important;
-        width: 210mm !important;
-        height: 297mm !important;
-        max-width: none !important;
-        position: absolute !important;
-        top: 0 !important;
-        left: 0 !important;
+      body {
+        background-color: #ffffff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 0 !important;
       }
-      @page { size: A4 portrait; margin: 0; }
-    }
-
-    /* 經典明體大標題：斜體、亮黃金漸層、黑描邊與落影 */
-    .poster-title-style {
-      font-family: 'Noto Serif TC', serif;
-      font-weight: 900;
-      font-style: italic;
-      color: #fde047;
-      -webkit-text-stroke: 2.5px #000000;
-      text-shadow: 4px 4px 0px #000000;
-    }
-
-    .poster-subtitle-style {
-      font-family: 'Noto Sans TC', sans-serif;
-      font-weight: 900;
-      color: #ffffff;
-      -webkit-text-stroke: 1.5px #000000;
-      text-shadow: 2.5px 2.5px 0px #000000;
-    }
-
-    .label-badge {
-      background-color: #1e293b;
-      border: 2px solid #ffffff;
-      color: #ffffff;
-      font-weight: 900;
-      font-size: 11px;
-      padding: 3px 10px;
-      border-radius: 9999px;
-      box-shadow: 2px 2px 0px #000000;
-    }
-
-    .text-stroke-clean {
-      -webkit-text-stroke: 2.5px #000000;
-      paint-order: stroke fill;
-      stroke-linejoin: round;
+      .no-print {
+        display: none !important;
+      }
+      .print-poster-page {
+        width: 100% !important;
+        max-width: 297mm !important; /* A4 landscape-like ratio optimization */
+        margin: 0 auto !important;
+        box-shadow: none !important;
+        border: none !important;
+        background: white !important;
+        padding: 0px !important;
+      }
+      .timetable-grid {
+        box-shadow: none !important;
+        border-width: 2px !important;
+      }
+      th, td {
+        padding: 6px 4px !important;
+        font-size: 11px !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 8mm;
+      }
     }
   </style>
 </head>
-<body class="p-2 md:p-6">
+<body class="p-3 md:p-8 text-slate-900 selection:bg-rose-300">
 
-  <div class="a4-poster-canvas p-4 md:p-6 flex flex-col justify-between text-white select-none">
+  <!-- Outer Poster Frame -->
+  <div class="max-w-7xl mx-auto bg-white border-4 border-slate-900 rounded-3xl p-4 md:p-8 print-poster-page relative">
     
-    <!-- 背景放射光芒點綴 -->
-    <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_26px] opacity-15 pointer-events-none"></div>
-    <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[550px] bg-white rounded-full blur-[100px] opacity-35 pointer-events-none"></div>
-
-    <!-- 頂部標題區 -->
-    <div class="text-center relative z-20 space-y-1 transform -skew-y-1 mt-1">
-      <h1 class="poster-title-style text-4xl md:text-5xl tracking-tight">
-        復興福音的勇士
-      </h1>
-      <p class="poster-subtitle-style text-base md:text-lg tracking-widest uppercase">
-        REVIVAL! GOSPEL WARRIORS
-      </p>
-
-      <!-- 標籤膠囊：使用神字版譯本 -->
-      <div class="flex justify-center gap-2 mt-2">
-        <span class="label-badge transform -rotate-2">
-          復興小區的復興
+    <!-- Lobby Display Notice - Hidden on Print -->
+    <div class="no-print bg-slate-900 text-slate-100 px-4 py-3 rounded-xl mb-6 flex flex-col md:flex-row justify-between items-center gap-3 shadow-[4px_4px_0px_0px_rgba(244,63,94,1)]">
+      <div class="flex items-center gap-3">
+        <span class="bg-rose-500 text-white font-black text-xs px-2.5 py-1 rounded-full animate-bounce">
+          📢 大廳看板模式
         </span>
-        <span class="label-badge transform rotate-1">
-          穿戴神所賜的全副屬靈軍裝
-        </span>
+        <p class="text-sm font-bold text-slate-300">
+          本版本專為「大堂入口、公佈欄」設計。投影至螢幕時會<span class="text-yellow-300">依據時間自動高亮當前課程</span>。
+        </p>
       </div>
-    </div>
-
-    <!-- 中央插畫區 (100% 內建向量 SVG，絕無破圖風險) -->
-    <div class="my-1 relative flex items-center justify-center flex-grow min-h-[350px]">
-      
-      <svg class="w-full h-full max-h-[450px] z-10" viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="4" result="blur" />
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-          <marker id="pointer-dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
-            <circle cx="5" cy="5" r="4" fill="black" stroke="white" stroke-width="1.5"/>
-          </marker>
-        </defs>
-
-        <!-- 放射能量背景線 -->
-        <g opacity="0.35">
-          <polygon points="250,240 0,160 0,120" fill="#FFF"/>
-          <polygon points="250,240 100,0 150,0" fill="#FFF"/>
-          <polygon points="250,240 350,0 400,0" fill="#FFF"/>
-          <polygon points="250,240 500,160 500,120" fill="#FFF"/>
-          <polygon points="250,240 500,320 500,360" fill="#FFF"/>
-          <polygon points="250,240 0,320 0,360" fill="#FFF"/>
-        </g>
-
-        <!-- 左側：現代會堂建築 -->
-        <g transform="translate(10, 160)" opacity="0.85">
-          <polygon points="45,40 60,0 75,40" fill="#475569" stroke="#000" stroke-width="1.5"/>
-          <line x1="60" y1="-12" x2="60" y2="8" stroke="#DC2626" stroke-width="3"/>
-          <line x1="52" y1="-4" x2="68" y2="-4" stroke="#DC2626" stroke-width="3"/>
-          <rect x="45" y="40" width="30" height="100" fill="#F1F5F9" stroke="#000" stroke-width="2"/>
-          <rect x="5" y="80" width="110" height="60" fill="#E2E8F0" stroke="#000" stroke-width="2" rx="4"/>
-          <polygon points="-5,80 60,45 125,80" fill="#334155" stroke="#000" stroke-width="2"/>
-          <path d="M20 100 A 8 8 0 0 1 36 100 L 34 130 L 20 130 Z" fill="#FDE047" stroke="#000" stroke-width="1.2"/>
-          <path d="M84 100 A 8 8 0 0 1 100 100 L 100 130 L 84 130 Z" fill="#FDE047" stroke="#000" stroke-width="1.2"/>
-        </g>
-
-        <!-- 右側：城市現代高樓 -->
-        <g transform="translate(370, 170)" opacity="0.85">
-          <rect x="15" y="40" width="95" height="110" fill="#E2E8F0" stroke="#000" stroke-width="2" rx="4"/>
-          <rect x="25" y="55" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
-          <rect x="55" y="55" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
-          <rect x="25" y="85" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
-          <rect x="55" y="85" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
-          <rect x="25" y="115" width="20" height="30" fill="#475569" stroke="#000" stroke-width="1"/>
-          <rect x="55" y="115" width="20" height="30" fill="#475569" stroke="#000" stroke-width="1"/>
-        </g>
-
-        <!-- 英雄信仰底座 -->
-        <ellipse cx="250" cy="425" rx="140" ry="25" fill="#1E293B" stroke="#000" stroke-width="3"/>
-        <ellipse cx="250" cy="420" rx="130" ry="20" fill="#475569" stroke="#94A3B8" stroke-width="2"/>
-        <ellipse cx="250" cy="416" rx="110" ry="15" fill="#64748B" />
-
-        <!-- 青少年福音勇士人物角色 -->
-        <g id="hero-character" transform="translate(250, 240)">
-          
-          <!-- 飄逸紅斗篷 -->
-          <path d="M-25 -50 L-95 65 L95 105 L25 -50 Z" fill="#DC2626" stroke="#000" stroke-width="2.5"/>
-          <path d="M-25 -50 L-55 105 L-20 105 Z" fill="#991B1B" />
-          <path d="M25 -50 L55 105 L20 105 Z" fill="#991B1B" />
-
-          <!-- 牛仔褲與雙腿 -->
-          <rect x="-18" y="45" width="12" height="110" fill="#1E3A8A" stroke="#000" stroke-width="2"/>
-          <rect x="6" y="45" width="12" height="110" fill="#1E3A8A" stroke="#000" stroke-width="2"/>
-
-          <!-- 潮流高筒福音球鞋 (左腳) -->
-          <g transform="translate(-20, 140)">
-            <path d="M-18 20 L8 20 L8 32 L-22 32 Z" fill="#FFF" stroke="#000" stroke-width="2"/>
-            <path d="M-16 28 L6 28 L6 32 L-18 32 Z" fill="#EA580C" />
-            <path d="M-18 0 C-18 0 8 5 8 20 L-18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
-            <path d="M-16 4 Q-6 6 -2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
-            <path d="M-10 10 L4 10 M-8 14 L2 14" stroke="#FFF" stroke-width="1.5"/>
-          </g>
-          <!-- 潮流高筒福音球鞋 (右腳) -->
-          <g transform="translate(6, 140)">
-            <path d="M-8 20 L18 20 L22 32 L-8 32 Z" fill="#FFF" stroke="#000" stroke-width="2"/>
-            <path d="M-6 28 L16 28 L18 32 L-6 32 Z" fill="#EA580C" />
-            <path d="M18 0 C18 0 -8 5 -8 20 L18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
-            <path d="M16 4 Q6 6 2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
-            <path d="M10 10 L-4 10 M8 14 L-2 14" stroke="#FFF" stroke-width="1.5"/>
-          </g>
-
-          <!-- 軀幹、公義胸甲與真理腰帶 -->
-          <rect x="-24" y="-30" width="48" height="85" fill="#38BDF8" stroke="#000" stroke-width="2" rx="4"/>
-          <path d="M-22 -28 L22 -28 L18 40 L-18 40 Z" fill="#CBD5E1" stroke="#000" stroke-width="2"/>
-          <path d="M-10 -15 L-10 20 M10 -15 L10 20" stroke="#94A3B8" stroke-width="2"/>
-          <!-- 真理腰帶 -->
-          <rect x="-25" y="38" width="50" height="12" fill="#78350F" stroke="#000" stroke-width="2"/>
-          <rect x="-7" y="35" width="14" height="18" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
-          <!-- 神的話語卷軸 -->
-          <g transform="translate(18, 48)">
-            <rect x="0" y="0" width="14" height="30" fill="#FEF08A" stroke="#000" stroke-width="1.5" rx="3" transform="rotate(15)"/>
-            <text x="7" y="16" fill="#78350F" font-size="7" font-weight="900" text-anchor="middle" transform="rotate(15)">Word</text>
-          </g>
-
-          <!-- 頭部、動漫神情與救恩頭盔 -->
-          <circle cx="0" cy="-60" r="23" fill="#FDBA74" stroke="#000" stroke-width="2"/>
-          <ellipse cx="-8" cy="-62" rx="3.5" ry="5.5" fill="#000"/>
-          <ellipse cx="8" cy="-62" rx="3.5" ry="5.5" fill="#000"/>
-          <circle cx="-9" cy="-64" r="1.5" fill="#FFF"/>
-          <circle cx="7" cy="-64" r="1.5" fill="#FFF"/>
-          <path d="M-7 -50 Q0 -43 7 -50" stroke="#000" stroke-width="3" fill="none"/>
-          <!-- 帥氣髮型 -->
-          <path d="M-22 -60 L-27 -50 L-15 -55 L-20 -40 L-8 -51 L0 -40 L8 -51 L20 -40 L15 -55 L27 -50 L22 -60 Z" fill="#1E293B" stroke="#000" stroke-width="1.5"/>
-          <path d="M-15 -77 L-24 -65 L-10 -71 L-4 -63 L4 -63 L10 -71 L24 -65 L15 -77 Z" fill="#1E293B"/>
-          <!-- 救恩頭盔 -->
-          <path d="M-24 -69 C-24 -100 24 -100 24 -69 Z" fill="#94A3B8" stroke="#000" stroke-width="2"/>
-          <path d="M-24 -69 L24 -69 L0 -58 Z" fill="#475569" stroke="#000" stroke-width="2"/>
-          <!-- 頭盔紅纓頂飾 -->
-          <path d="M-6 -95 Q0 -125 24 -115 Q12 -97 -2 -95" fill="#EF4444" stroke="#000" stroke-width="1.5"/>
-
-          <!-- 左手：信心的盾牌 (寫有「信」、「心」兩個中文大字) -->
-          <rect x="20" y="-15" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(20 20 -15)"/>
-          <g transform="translate(54, -15)">
-            <path d="M-35 -40 L35 -40 C35 -40 35 25 0 60 C-35 25 -35 -40 -35 -40 Z" fill="#D97706" stroke="#000" stroke-width="3.5"/>
-            <path d="M-27 -34 L27 -34 C27 -34 27 18 0 49 C-27 18 -27 -34 -27 -34 Z" fill="#FEF08A" stroke="#000" stroke-width="2"/>
-            <line x1="0" y1="-30" x2="0" y2="40" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
-            <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
-            <!-- 十字架襯底 -->
-            <path d="M-4 -30 L4 -30 L4 35 L-4 35 Z" fill="#EA580C" opacity="0.3"/>
-            <path d="M-20 -14 L20 -14 L20 -6 L-20 -6 Z" fill="#EA580C" opacity="0.3"/>
-            <!-- 端莊明體「信」、「心」大字 -->
-            <text x="-12" y="8" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC">信</text>
-            <text x="12" y="8" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC">心</text>
-          </g>
-
-          <!-- 右手：聖靈的劍 (帶有電弧光暈) -->
-          <rect x="-40" y="-15" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(-20 -40 -15)"/>
-          <g transform="translate(-54, -20) rotate(-30)">
-            <rect x="-14" y="-4" width="28" height="8" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
-            <rect x="-4" y="4" width="8" height="20" fill="#78350F" stroke="#000" stroke-width="2"/>
-            <circle cx="0" cy="24" r="5" fill="#F59E0B" stroke="#000" stroke-width="1.5"/>
-            <polygon points="-5,-4 -4,-135 0,-150 4,-135 5,-4" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2.5" filter="url(#glow)"/>
-            <line x1="0" y1="-4" x2="0" y2="-140" stroke="#38BDF8" stroke-width="2"/>
-            <!-- 能量電弧 spark -->
-            <path d="M-15 -90 L-10 -95 L-12 -105 L-5 -98" stroke="#38BDF8" stroke-width="1.5" fill="none"/>
-            <path d="M15 -70 L10 -75 L12 -85 L5 -78" stroke="#38BDF8" stroke-width="1.5" fill="none"/>
-          </g>
-
-        </g>
-
-        <!-- 指示線與標註點 -->
-        <g stroke="#000000" stroke-width="2" fill="none" marker-end="url(#pointer-dot)">
-          <path d="M 315, 135 L 255, 155"/> <!-- 頭盔 -->
-          <path d="M 180, 210 L 225, 230"/> <!-- 胸甲 -->
-          <path d="M 195, 280 L 235, 280"/> <!-- 腰帶 -->
-          <path d="M 140, 310 L 175, 310"/> <!-- 聖靈的劍 -->
-          <path d="M 360, 370 L 320, 370"/> <!-- 福音鞋 -->
-        </g>
-
-        <!-- 標籤卡片 (黑邊白底重陰影) -->
-        <!-- 頭盔 -->
-        <g transform="translate(320, 120)">
-          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">頭盔</text>
-        </g>
-        <!-- 胸甲 -->
-        <g transform="translate(130, 198)">
-          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">胸甲</text>
-        </g>
-        <!-- 腰帶 -->
-        <g transform="translate(145, 268)">
-          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">腰帶</text>
-        </g>
-        <!-- 聖靈的劍 -->
-        <g transform="translate(55, 298)">
-          <rect x="0" y="0" width="80" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="40" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">聖靈的劍</text>
-        </g>
-        <!-- 福音鞋 -->
-        <g transform="translate(365, 358)">
-          <rect x="0" y="0" width="60" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="30" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">福音鞋</text>
-        </g>
-        
-        <!-- 符合青少年基督徒的勇士 -->
-        <g transform="translate(340, 175)">
-          <rect x="0" y="0" width="130" height="32" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6" filter="drop-shadow(2px 2px 0px #000)"/>
-          <text x="65" y="15" fill="#000000" font-size="10" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">符合青少年</text>
-          <text x="65" y="26" fill="#000000" font-size="10" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">基督徒的勇士</text>
-        </g>
-
-      </svg>
-
-    </div>
-
-    <!-- 底部資訊卡 Deck -->
-    <div class="bg-indigo-950/80 border-4 border-black rounded-3xl p-3 relative z-20 grid grid-cols-3 gap-2.5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
-      
-      <!-- 卡片 1: 詩歌佈道會 (淡藍色) -->
-      <div class="bg-[#80d8ff] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-2.5 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-        <span class="text-base md:text-lg text-slate-900 mb-0.5"><i class="fa-solid fa-music"></i></span>
-        <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">詩歌佈道會</h4>
-        <p class="text-[11px] md:text-xs font-black mt-1 leading-tight">7/26 19:00~20:30</p>
-        <p class="text-[10px] md:text-[11px] font-extrabold text-indigo-900 mt-0.5 leading-none truncate w-full">《主默然愛你》</p>
-      </div>
-
-      <!-- 卡片 2: 營會時間 (珊瑚粉) -->
-      <div class="bg-[#ff8a80] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-        <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-clock"></i></span>
-        <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">營會時間</h4>
-        <p class="text-base md:text-lg font-black mt-1 leading-none">7/23~26</p>
-      </div>
-
-      <!-- 卡片 3: 地點 (薄荷綠) -->
-      <div class="bg-[#b9f6ca] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-        <div class="flex flex-col items-center w-full">
-          <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-map-location-dot"></i></span>
-          <h4 class="text-[10px] font-black opacity-80 uppercase leading-none text-center">地點</h4>
+      <!-- Clock & Controls -->
+      <div class="flex items-center gap-3 w-full md:w-auto justify-end">
+        <div class="bg-slate-800 px-3 py-1.5 rounded-lg border border-slate-700 font-mono text-sm text-emerald-400 flex items-center gap-2">
+          <i class="fa-regular fa-clock"></i> <span id="lobbyClock">00:00:00</span>
         </div>
-        <div class="text-[9px] md:text-[11px] font-black text-slate-900 mt-1 space-y-0.5 w-full text-center truncate">
-          <div>大灣教會</div>
-          <div class="flex items-center justify-center gap-0.5 text-rose-600 font-extrabold">
-            📍<span>羅浮居民會館</span>
+        <button onclick="window.print()" class="bg-cyan-400 hover:bg-cyan-500 text-slate-900 text-xs font-black px-3.5 py-2 rounded-lg border-2 border-slate-900 transition-all">
+          <i class="fa-solid fa-print"></i> 列印海報
+        </button>
+      </div>
+    </div>
+
+    <!-- Header Section (Highly readable from 3 meters away) -->
+    <div class="text-center md:text-left border-b-8 border-slate-900 pb-6 mb-6 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <div class="flex items-center justify-center md:justify-start gap-2 mb-2">
+          <span class="bg-slate-900 text-amber-300 font-extrabold text-xs px-3 py-1 rounded-md border border-slate-900 uppercase tracking-widest">
+            TJC 真耶穌教會復興小區
+          </span>
+          <span class="bg-rose-500 text-white font-bold text-xs px-2.5 py-1 rounded">公佈欄專用大字版</span>
+        </div>
+        <h1 class="text-3xl md:text-5xl font-black tracking-tight text-slate-950">
+          115年青少年福音營 <span class="text-indigo-600 block md:inline">課程時間表</span>
+        </h1>
+        <p class="text-slate-600 font-bold mt-2 flex flex-wrap justify-center md:justify-start gap-4 text-sm md:text-base">
+          <span><i class="fa-solid fa-shield-halved text-emerald-600"></i> 主題：福音的勇士</span>
+          <span><i class="fa-solid fa-location-dot text-rose-500"></i> 地點：大灣教會</span>
+          <span><i class="fa-solid fa-calendar-check text-indigo-500"></i> 時間：7月23日 (四) ~ 7月26日 (日)</span>
+        </p>
+      </div>
+      
+      <!-- Quick Legend Icons for public scan -->
+      <div class="flex gap-2 bg-slate-100 p-3 rounded-xl border-2 border-slate-900 text-xs font-black shrink-0">
+        <div class="flex flex-col items-center px-2">
+          <span class="text-lg">🙏</span><span class="text-[10px] text-slate-500">禱告/靈修</span>
+        </div>
+        <div class="border-r border-slate-300"></div>
+        <div class="flex flex-col items-center px-2">
+          <span class="text-lg">📖</span><span class="text-[10px] text-slate-500">聖經專題</span>
+        </div>
+        <div class="border-r border-slate-300"></div>
+        <div class="flex flex-col items-center px-2">
+          <span class="text-lg">🎵</span><span class="text-[10px] text-slate-500">詩歌/音樂</span>
+        </div>
+        <div class="border-r border-slate-300"></div>
+        <div class="flex flex-col items-center px-2">
+          <span class="text-lg">🍱</span><span class="text-[10px] text-slate-500">餐點/休息</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Manual Demo Simulator for Admins -->
+    <div class="no-print mb-6 p-3 bg-amber-50 rounded-xl border-2 border-slate-900 flex flex-wrap items-center gap-2 text-xs">
+      <span class="font-extrabold text-slate-800"><i class="fa-solid fa-gamepad text-amber-600"></i> 看板演示模擬：</span>
+      <button onclick="demoLobbyTime('7/23', '10:30')" class="px-2 py-1 bg-white border border-slate-400 rounded hover:bg-slate-200">模擬 7/23 上午破冰</button>
+      <button onclick="demoLobbyTime('7/24', '14:30')" class="px-2 py-1 bg-white border border-slate-400 rounded hover:bg-slate-200">模擬 7/24 聚會</button>
+      <button onclick="demoLobbyTime('7/25', '19:30')" class="px-2 py-1 bg-white border border-slate-400 rounded hover:bg-slate-200">模擬 7/25 詩歌音樂會</button>
+      <button onclick="demoLobbyTime('7/26', '09:00')" class="px-2 py-1 bg-white border border-slate-400 rounded hover:bg-slate-200">模擬 7/26 詩歌快閃</button>
+      <button onclick="clearDemo()" class="px-2 py-1 bg-rose-200 border border-rose-400 rounded hover:bg-rose-300 font-bold ml-auto">還原實時偵測</button>
+    </div>
+
+    <!-- Aligned Master Timetable Grid -->
+    <div class="overflow-x-auto">
+      <table class="w-full timetable-grid bg-white border-collapse rounded-2xl overflow-hidden text-sm md:text-base">
+        
+        <!-- Day Table Headers -->
+        <thead>
+          <tr class="bg-slate-950 text-white text-center">
+            <th class="w-[12%] p-3 border-r-2 border-slate-800 text-xs md:text-sm font-black">時間/時段</th>
+            <th class="w-[22%] p-3 border-r-2 border-slate-800 bg-indigo-900">
+              <div class="text-[11px] opacity-75 font-bold">第一天</div>
+              <div class="text-sm md:text-lg font-extrabold">7月23日 (四)</div>
+              <div class="text-[11px] bg-indigo-800 inline-block px-2 py-0.5 rounded mt-1 font-semibold">報到與啟航</div>
+            </th>
+            <th class="w-[22%] p-3 border-r-2 border-slate-800 bg-cyan-900">
+              <div class="text-[11px] opacity-75 font-bold">第二天</div>
+              <div class="text-sm md:text-lg font-extrabold">7月24日 (五)</div>
+              <div class="text-[11px] bg-cyan-800 inline-block px-2 py-0.5 rounded mt-1 font-semibold">精兵培育日</div>
+            </th>
+            <th class="w-[22%] p-3 border-r-2 border-slate-800 bg-emerald-900">
+              <div class="text-[11px] opacity-75 font-bold">第三天</div>
+              <div class="text-sm md:text-lg font-extrabold">7月25日 (六)</div>
+              <div class="text-[11px] bg-emerald-800 inline-block px-2 py-0.5 rounded mt-1 font-semibold">安息聖日/音樂會</div>
+            </th>
+            <th class="w-[22%] p-3 bg-amber-900">
+              <div class="text-[11px] opacity-75 font-bold">第四天</div>
+              <div class="text-sm md:text-lg font-extrabold">7月26日 (日)</div>
+              <div class="text-[11px] bg-amber-800 inline-block px-2 py-0.5 rounded mt-1 font-semibold">差遣與凱旋</div>
+            </th>
+          </tr>
+        </thead>
+
+        <!-- Synchronized Rows -->
+        <tbody class="font-bold divide-y-2 divide-slate-900">
+          
+          <!-- Row 1: Early Prayer -->
+          <tr data-start="07:00" data-end="07:30" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              07:00<br>|<br>07:30
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (學員尚在準備與報到)
+            </td>
+            <!-- Day 2 Early Prayer -->
+            <td class="p-3 border-r-2 border-slate-900 bg-indigo-50/50">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">🙏 早禱會</div>
+              <div class="text-sm font-black">早禱會</div>
+              <div class="text-xs text-slate-500 font-bold mt-1">主領：陳木群 傳道</div>
+            </td>
+            <!-- Day 3 Early Prayer -->
+            <td class="p-3 border-r-2 border-slate-900 bg-indigo-50/50">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">🙏 早禱會</div>
+              <div class="text-sm font-black">早禱會</div>
+              <div class="text-xs text-slate-500 font-bold mt-1">主領：高俊祥 傳道</div>
+            </td>
+            <!-- Day 4 Early Prayer -->
+            <td class="p-3 bg-indigo-50/50">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">🙏 早禱會</div>
+              <div class="text-sm font-black">早禱會</div>
+              <div class="text-xs text-slate-500 font-bold mt-1">主領：陳義道 傳道</div>
+            </td>
+          </tr>
+
+          <!-- Row 2: Breakfast -->
+          <tr data-start="07:30" data-end="08:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              07:30<br>|<br>08:00
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (學員出發中)
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 bg-amber-50/40">
+              <div class="flex items-center gap-1 text-xs text-amber-700 mb-1">🍱 早餐</div>
+              <div class="text-sm font-black">早餐 / 餐桌整理</div>
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 bg-amber-50/40">
+              <div class="flex items-center gap-1 text-xs text-amber-700 mb-1">🍱 早餐</div>
+              <div class="text-sm font-black">早餐 / 餐桌整理</div>
+            </td>
+            <td class="p-3 bg-amber-50/40">
+              <div class="flex items-center gap-1 text-xs text-amber-700 mb-1">🍱 早餐</div>
+              <div class="text-sm font-black">早餐 / 餐桌整理</div>
+            </td>
+          </tr>
+
+          <!-- Row 3: Morning Block 1 -->
+          <tr data-start="08:00" data-end="10:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              08:00<br>|<br>10:00
+            </td>
+            <!-- Day 1 Register -->
+            <td class="p-3 border-r-2 border-slate-900 bg-blue-50/70">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">🎯 08:00 - 10:00</div>
+              <div class="text-base font-black text-blue-950">報到暨分組</div>
+              <div class="text-[11px] text-slate-600 font-semibold mt-1 space-y-0.5">
+                <div>• 節目策劃 / 詩歌見證</div>
+                <div>• 資訊媒體 / 文宣美工</div>
+                <div>• 禱告守望 (輔導員)</div>
+              </div>
+            </td>
+            <!-- Day 2 Training -->
+            <td class="p-3 border-r-2 border-slate-900 bg-blue-50/70">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">🧠 08:10 - 10:00</div>
+              <div class="text-base font-black text-blue-950">陪談/接待訓練</div>
+              <div class="text-xs text-slate-500 font-bold mt-1">講員：羅家榮</div>
+              <div class="text-[11px] text-slate-400 mt-1">建立溫暖接待與引領契機</div>
+            </td>
+            <!-- Day 3 Practice -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎻 08:10 - 09:20</div>
+              <div class="text-base font-black text-emerald-950">詩歌音樂會演練</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">輔導員團隊指導</div>
+              <div class="text-[10px] text-rose-500 font-extrabold mt-1">※ 緊接著 09:30 禱告</div>
+            </td>
+            <!-- Day 4 pack -->
+            <td class="p-3 bg-rose-50/50">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1">🧳 08:00 - 08:30</div>
+              <div class="text-sm font-black">收拾行李 (輔導員)</div>
+              <div class="border-t border-slate-200 my-2 pt-1.5">
+                <div class="text-xs text-rose-700 mb-0.5">⚡ 08:30 - 10:20</div>
+                <div class="text-sm font-black text-rose-950">福音詩歌快閃</div>
+                <div class="text-[11px] text-slate-500 font-bold">走上街頭，唱出活力</div>
+              </div>
+            </td>
+          </tr>
+
+          <!-- Row 4: Morning Block 2 -->
+          <tr data-start="10:10" data-end="11:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              10:10<br>|<br>11:00
+            </td>
+            <!-- Day 1 Icebreaker -->
+            <td class="p-3 border-r-2 border-slate-900 bg-rose-50/70">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1">❄️ 10:10 - 11:00</div>
+              <div class="text-base font-black text-rose-950">小組時間：破冰</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">輔導員團隊</div>
+            </td>
+            <!-- Day 2 Section Study -->
+            <td class="p-3 border-r-2 border-slate-900 bg-blue-50/70">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">⚔️ 10:10 - 11:00</div>
+              <div class="text-base font-black text-blue-950">核心課程 (分組)</div>
+              <div class="text-xs text-slate-500 font-bold">節目/詩歌/媒體/文宣/禱告</div>
+            </td>
+            <!-- Day 3 Sabbath -->
+            <td class="p-3 border-r-2 border-slate-900 bg-purple-50/70">
+              <div class="flex items-center gap-1 text-xs text-purple-700 mb-1">⛪ 09:30 - 11:00</div>
+              <div class="text-base font-black text-purple-950">安息日聚會 (上午)</div>
+              <div class="text-sm font-black text-indigo-900">傳福音的使命 I</div>
+              <div class="text-xs text-slate-600 font-bold mt-0.5">講員：陳木群 傳道</div>
+            </td>
+            <!-- Day 4 Feedback -->
+            <td class="p-3 bg-blue-50/60">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">🗣️ 10:20 - 11:00</div>
+              <div class="text-base font-black text-blue-950">雙向溝通</div>
+              <div class="text-[11px] text-slate-500 font-bold mt-1">營會回顧、感想與交流</div>
+            </td>
+          </tr>
+
+          <!-- Row 5: Morning Block 3 -->
+          <tr data-start="11:10" data-end="12:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              11:10<br>|<br>12:00
+            </td>
+            <!-- Day 1 Opening -->
+            <td class="p-3 border-r-2 border-slate-900 bg-violet-50/70">
+              <div class="flex items-center gap-1 text-xs text-violet-700 mb-1">🏁 11:10 - 12:00</div>
+              <div class="text-base font-black text-violet-950">開會式</div>
+              <div class="text-xs text-slate-500 font-bold">主領：陳義道 傳道</div>
+            </td>
+            <!-- Day 2 Choir -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎵 11:10 - 12:00</div>
+              <div class="text-base font-black text-emerald-950">大合唱練習</div>
+              <div class="text-xs text-slate-500 font-bold">指導：詩頌組</div>
+            </td>
+            <!-- Day 3 Choir -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎵 11:10 - 12:00</div>
+              <div class="text-base font-black text-emerald-950">大合唱練習</div>
+              <div class="text-xs text-slate-500 font-bold">指導：詩頌組</div>
+            </td>
+            <!-- Day 4 Closing -->
+            <td class="p-3 bg-violet-100 border-2 border-slate-900 shadow-[2px_2px_0px_0px_rgba(15,23,42,1)]">
+              <div class="flex items-center gap-1 text-xs text-violet-800 mb-1">🏆 11:10 - 12:00</div>
+              <div class="text-base font-black text-violet-950">閉會式</div>
+              <div class="text-xs text-slate-700 font-bold">主領：聖工人員</div>
+            </td>
+          </tr>
+
+          <!-- Row 6: Lunch & Rest (COMMON) -->
+          <tr data-start="12:00" data-end="13:50" class="time-row bg-slate-50 hover:bg-slate-100 transition-colors">
+            <td class="p-3 bg-slate-200 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              12:00<br>|<br>13:50
+            </td>
+            <td colspan="3" class="p-3 border-r-2 border-slate-900 text-center bg-amber-50/20">
+              <div class="flex items-center justify-center gap-2 text-xs text-amber-800 font-bold mb-1">
+                <span>🍱 午餐與環境整理</span> | <span>💤 中午休息 (12:50 - 13:40)</span>
+              </div>
+              <div class="text-xs text-slate-500 font-semibold">
+                ※ 營會生活作息公約：12:40 打掃收拾 / 12:50 午休躺臥 / 13:40 午起預備聚會
+              </div>
+            </td>
+            <!-- Day 4 Go Home early -->
+            <td class="p-3 bg-amber-50/40 text-center">
+              <div class="flex items-center justify-center gap-1 text-xs text-amber-700 mb-0.5">🍱 午餐</div>
+              <div class="text-sm font-black">午餐 / 珍重再見</div>
+              <div class="text-xs text-indigo-700 font-extrabold mt-1">✨ 凱旋賦歸！</div>
+            </td>
+          </tr>
+
+          <!-- Row 7: Afternoon Block 1 -->
+          <tr data-start="14:00" data-end="15:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              14:00<br>|<br>15:00
+            </td>
+            <!-- Day 1 Choir -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎵 14:00 - 14:50</div>
+              <div class="text-base font-black text-emerald-950">大合唱練習</div>
+              <div class="text-xs text-slate-500 font-bold">指導：詩頌組</div>
+            </td>
+            <!-- Day 2 Worship -->
+            <td class="p-3 border-r-2 border-slate-900 bg-purple-50/70">
+              <div class="flex items-center gap-1 text-xs text-purple-700 mb-1">⛪ 14:00 - 15:00</div>
+              <div class="text-base font-black text-purple-950">聚會：傳福音使命II</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">講員：高俊祥 傳道</div>
+            </td>
+            <!-- Day 3 Sabbath Afternoon -->
+            <td class="p-3 border-r-2 border-slate-900 bg-purple-50/70">
+              <div class="flex items-center gap-1 text-xs text-purple-700 mb-1">⛪ 13:30 - 15:00</div>
+              <div class="text-base font-black text-purple-950">安息日聚會 (下午)</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">指導：福音組團隊</div>
+              <div class="text-[11px] text-rose-500 font-bold">※ 13:30 準時求聖靈禱告</div>
+            </td>
+            <!-- Day 4 Ended -->
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 8: Afternoon Block 2 -->
+          <tr data-start="15:00" data-end="16:20" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              15:00<br>|<br>16:20
+            </td>
+            <!-- Day 1 Group Training -->
+            <td class="p-3 border-r-2 border-slate-900 bg-blue-50/70">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">⚔️ 15:00 - 16:20</div>
+              <div class="text-base font-black text-blue-950">核心課程 (分組)</div>
+              <div class="text-xs text-slate-500 font-bold">1-4組各別專業培訓</div>
+              <div class="text-[10px] text-slate-500 mt-1">第5組(禱告組)機動編入支援</div>
+            </td>
+            <!-- Day 2 Group training final -->
+            <td class="p-3 border-r-2 border-slate-900 bg-blue-50/70">
+              <div class="flex items-center gap-1 text-xs text-blue-700 mb-1">⚔️ 15:10 - 15:40</div>
+              <div class="text-base font-black text-blue-950">核心課程 (分組)</div>
+              <div class="text-[11px] text-slate-500">分組演練收尾、道具確認</div>
+            </td>
+            <!-- Day 3 Explaining & Evening prayer -->
+            <td class="p-3 border-r-2 border-slate-900 bg-indigo-50/70">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">📢 15:10 - 15:40</div>
+              <div class="text-sm font-bold">福音傳出去：行前說明</div>
+              <div class="text-xs text-slate-500 font-bold">講員：林新賜 執事</div>
+              <div class="border-t border-slate-200 mt-2 pt-1">
+                <div class="text-xs text-indigo-700">🛐 15:50 - 16:20 晚禱會</div>
+                <div class="text-xs text-slate-600">主領：李永生 輔導</div>
+              </div>
+            </td>
+            <!-- Day 4 Ended -->
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 9: Afternoon Block 3 -->
+          <tr data-start="16:40" data-end="17:20" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              16:40<br>|<br>17:20
+            </td>
+            <!-- Day 1 Prayer -->
+            <td class="p-3 border-r-2 border-slate-900 bg-indigo-50/70">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">🛐 16:40 - 17:20</div>
+              <div class="text-base font-black text-indigo-950">晚禱會</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">主領：吳以利沙 輔導</div>
+            </td>
+            <!-- Day 2 Prayer -->
+            <td class="p-3 border-r-2 border-slate-900 bg-indigo-50/70">
+              <div class="flex items-center gap-1 text-xs text-indigo-700 mb-1">🛐 16:40 - 17:20</div>
+              <div class="text-base font-black text-indigo-950">晚禱會</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">主領：王鴻志 輔導</div>
+            </td>
+            <!-- Day 3 Invite & Prep -->
+            <td class="p-3 border-r-2 border-slate-900 bg-rose-50/70">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1">✉️ 16:20 - 17:20</div>
+              <div class="text-base font-black text-rose-950">發傳單邀請卡 / 場佈</div>
+              <div class="text-xs text-slate-600 font-semibold mt-0.5">全員動起來！為詩歌音樂會熱身</div>
+            </td>
+            <!-- Day 4 Ended -->
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 10: Dinner (COMMON) -->
+          <tr data-start="17:30" data-end="18:30" class="time-row bg-slate-50 hover:bg-slate-100 transition-colors">
+            <td class="p-3 bg-slate-200 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              17:30<br>|<br>18:30
+            </td>
+            <td colspan="3" class="p-3 border-r-2 border-slate-900 text-center bg-amber-50/20">
+              <div class="flex items-center justify-center gap-2 text-xs text-amber-800 font-bold">
+                <span>🚿 🍱 晚餐 & 盥洗時間 (17:30 - 18:30)</span>
+              </div>
+              <div class="text-xs text-slate-500 font-semibold mt-1">
+                ※ 為了夜晚專題充沛精神，請確實做好盥洗整理，注重餐桌衛生！
+              </div>
+            </td>
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 11: Evening Block 1 -->
+          <tr data-start="18:50" data-end="19:20" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              18:50<br>|<br>19:20
+            </td>
+            <!-- Day 1 Choir -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎵 18:50 - 19:20</div>
+              <div class="text-sm font-black">大合唱練習 (詩頌組)</div>
+            </td>
+            <!-- Day 2 Choir -->
+            <td class="p-3 border-r-2 border-slate-900 bg-emerald-50/70">
+              <div class="flex items-center gap-1 text-xs text-emerald-700 mb-1">🎵 18:50 - 19:20</div>
+              <div class="text-sm font-black">大合唱練習 (詩頌組)</div>
+            </td>
+            <!-- Day 3 Rehearsal -->
+            <td class="p-3 border-r-2 border-slate-900 bg-yellow-50/70">
+              <div class="flex items-center gap-1 text-xs text-yellow-700 mb-1">🎭 18:20 - 19:00</div>
+              <div class="text-sm font-black">音樂會彩排</div>
+              <div class="text-[10px] text-slate-500 font-bold">地點：羅浮多功能中心</div>
+            </td>
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 12: Evening Block 2 (HIGHLIGHT FOR CONCERT) -->
+          <tr data-start="19:30" data-end="20:30" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              19:30<br>|<br>20:30
+            </td>
+            <!-- Day 1 Seminar 1 -->
+            <td class="p-3 border-r-2 border-slate-900 bg-purple-50/70">
+              <div class="flex items-center gap-1 text-xs text-purple-700 mb-1">📖 19:30 - 20:30</div>
+              <div class="text-base font-black text-purple-950">福音專題一</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">講員：陳微慎</div>
+            </td>
+            <!-- Day 2 Seminar 2 -->
+            <td class="p-3 border-r-2 border-slate-900 bg-purple-50/70">
+              <div class="flex items-center gap-1 text-xs text-purple-700 mb-1">📖 19:30 - 20:30</div>
+              <div class="text-base font-black text-purple-950">福音專題二</div>
+              <div class="text-xs text-slate-500 font-bold mt-0.5">講員：簡忠榮</div>
+            </td>
+            <!-- Day 3 Concert (Highly Highlighted) -->
+            <td class="p-3 border-r-2 border-slate-900 bg-fuchsia-100 border-2 border-dashed border-rose-500">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1 font-extrabold">🌟 19:00 - 20:30</div>
+              <div class="text-base md:text-lg font-black text-fuchsia-950">✨ 詩歌音樂會</div>
+              <div class="text-xs text-slate-700 font-black mt-1">地點：羅浮多功能中心</div>
+              <div class="text-[10px] text-indigo-700 mt-1 font-bold">※ 竭力邀請慕道者與各界嘉賓！</div>
+            </td>
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 13: Evening Snacks -->
+          <tr data-start="20:30" data-end="21:00" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              20:30<br>|<br>21:00
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 bg-amber-50/40">
+              <div class="flex items-center gap-1 text-xs text-amber-700 mb-1">🍪 點心</div>
+              <div class="text-sm font-black">點心時間</div>
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 bg-amber-50/40">
+              <div class="flex items-center gap-1 text-xs text-amber-700 mb-1">🍪 點心</div>
+              <div class="text-sm font-black">點心時間</div>
+            </td>
+            <td class="p-3 border-r-2 border-slate-900 bg-amber-100">
+              <div class="flex items-center gap-1 text-xs text-amber-800 mb-1">🍪 🧹 點心/整復</div>
+              <div class="text-sm font-black">點心時間 / 21:00 場地復原</div>
+            </td>
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+          <!-- Row 14: Evening Fellowships -->
+          <tr data-start="21:00" data-end="22:30" class="time-row hover:bg-slate-50 transition-colors">
+            <td class="p-3 bg-slate-100 text-center border-r-2 border-slate-900 font-mono text-xs md:text-sm">
+              21:00<br>|<br>22:30
+            </td>
+            <!-- Day 1 fellowship -->
+            <td class="p-3 border-r-2 border-slate-900 bg-rose-50/50">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1">💬 21:00 - 21:40</div>
+              <div class="text-sm font-black">小組團契時間 (輔導員)</div>
+              <div class="text-[10px] text-slate-500 font-bold mt-1">💤 22:30 安靜就寢</div>
+            </td>
+            <!-- Day 2 fellowship -->
+            <td class="p-3 border-r-2 border-slate-900 bg-rose-50/50">
+              <div class="flex items-center gap-1 text-xs text-rose-700 mb-1">💬 21:00 - 21:40</div>
+              <div class="text-sm font-black">小組團契時間 (輔導員)</div>
+              <div class="text-[10px] text-slate-500 font-bold mt-1">💤 22:30 安靜就寢</div>
+            </td>
+            <!-- Day 3 fellowship -->
+            <td class="p-3 border-r-2 border-slate-900 bg-rose-50/50">
+              <div class="flex items-center gap-1 text-xs text-slate-700 mb-0.5">🚿 21:00 盥洗時間</div>
+              <div class="border-t border-slate-200 mt-2 pt-1.5">
+                <div class="flex items-center gap-1 text-xs text-rose-700 mb-0.5">💬 22:00 - 22:30</div>
+                <div class="text-sm font-black">小組感言交流</div>
+                <div class="text-[10px] text-rose-600 font-extrabold">💤 22:40 就寢</div>
+              </div>
+            </td>
+            <td class="p-3 text-slate-400 bg-slate-50 text-center font-normal text-xs">
+              (營會已結束)
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bottom Poster Details -->
+    <div class="print-footer-info mt-8 pt-6 border-t-4 border-slate-900 grid grid-cols-1 md:grid-cols-3 gap-4">
+      
+      <!-- Public Daily Routine Notice -->
+      <div class="bg-indigo-50 p-4 rounded-xl border-2 border-slate-900">
+        <h3 class="font-black text-sm mb-2 text-indigo-950 flex items-center gap-1.5">
+          <i class="fa-solid fa-bell"></i> 🕰️ 營會生活固定作息規範
+        </h3>
+        <ul class="text-xs font-bold space-y-1 text-slate-700">
+          <li class="flex justify-between"><span>🌅 學員早起與整理：</span><span class="text-indigo-900">06:30</span></li>
+          <li class="flex justify-between"><span>🧹 共同打掃整理：</span><span class="text-indigo-900">12:40</span></li>
+          <li class="flex justify-between"><span>💤 中午安靜午休：</span><span class="text-indigo-900">12:50 - 13:40</span></li>
+          <li class="flex justify-between"><span>🌙 全營熄燈就寢：</span><span class="text-rose-700">22:30 (週六 22:40)</span></li>
+        </ul>
+      </div>
+
+      <!-- General Staff Personnel Board -->
+      <div class="bg-emerald-50 p-4 rounded-xl border-2 border-slate-900">
+        <h3 class="font-black text-sm mb-2 text-emerald-950 flex items-center gap-1.5">
+          <i class="fa-solid fa-users-viewfinder"></i> 📋 營會聖工人員名單
+        </h3>
+        <div class="grid grid-cols-2 gap-2 text-xs font-bold text-slate-700">
+          <div class="bg-white p-1.5 rounded border border-slate-300">
+            <span class="text-slate-400">班負責</span><br>陳義道 傳道
+          </div>
+          <div class="bg-white p-1.5 rounded border border-slate-300">
+            <span class="text-slate-400">課務組</span><br>陳木群 傳道
+          </div>
+          <div class="bg-white p-1.5 rounded border border-slate-300">
+            <span class="text-slate-400">輔導組</span><br>高俊祥 傳道
+          </div>
+          <div class="bg-white p-1.5 rounded border border-slate-300">
+            <span class="text-slate-400">總務組</span><br>林新賜 執事
           </div>
         </div>
+      </div>
+
+      <!-- Public Support Details -->
+      <div class="bg-rose-50 p-4 rounded-xl border-2 border-slate-900 flex flex-col justify-between">
+        <div>
+          <h3 class="font-black text-sm mb-2 text-rose-950 flex items-center gap-1.5">
+            <i class="fa-solid fa-circle-info"></i> 🛡️ 輔導與緊急聯繫
+          </h3>
+          <p class="text-xs font-bold text-slate-700">
+            本營會輔導團隊均由「<span class="text-indigo-800">西大團契</span>」親切指導規劃與機動守望。
+          </p>
+        </div>
+        <p class="text-[11px] text-rose-800 font-extrabold mt-3 text-center bg-white py-1 rounded border border-rose-300">
+          💡 請學員隨身攜帶水壺並隨時注意靈修公約。
+        </p>
       </div>
 
     </div>
 
   </div>
 
+  <script>
+    // State Variables for Lobby Display
+    let simulatedDay = null; // e.g., "7/24"
+    let simulatedTimeStr = null; // e.g., "14:30"
+
+    window.onload = function() {
+      // Start Live Digital Signage Loop
+      setInterval(updateSignageClock, 1000);
+      updateSignageClock();
+    }
+
+    function updateSignageClock() {
+      const now = new Date();
+      
+      // Update Lobby Clock UI
+      const clockEl = document.getElementById('lobbyClock');
+      if (clockEl) {
+        clockEl.innerText = now.toTimeString().split(' ')[0];
+      }
+
+      // Check Active Sessions to spotlight current row
+      checkAndSpotlightRow(now);
+    }
+
+    function demoLobbyTime(day, time) {
+      simulatedDay = day;
+      simulatedTimeStr = time;
+      updateSignageClock();
+      showToast(`看板演示模擬中：${day} ${time}`, "📺");
+    }
+
+    function clearDemo() {
+      simulatedDay = null;
+      simulatedTimeStr = null;
+      updateSignageClock();
+      showToast(`已還原回實時大堂偵測！`, "🛡️");
+    }
+
+    function checkAndSpotlightRow(realTimeDate) {
+      let currentDay = "";
+      let currentTimeVal = 0; // minutes since midnight
+
+      if (simulatedDay && simulatedTimeStr) {
+        currentDay = simulatedDay;
+        const [h, m] = simulatedTimeStr.split(":").map(Number);
+        currentTimeVal = h * 60 + m;
+      } else {
+        const month = realTimeDate.getMonth() + 1;
+        const date = realTimeDate.getDate();
+        currentDay = `${month}/${date}`;
+        currentTimeVal = realTimeDate.getHours() * 60 + realTimeDate.getMinutes();
+      }
+
+      // Identify corresponding column index (Day 1 = 1, Day 2 = 2, Day 3 = 3, Day 4 = 4)
+      let dayColIndex = -1;
+      if (currentDay === '7/23') dayColIndex = 1;
+      else if (currentDay === '7/24') dayColIndex = 2;
+      else if (currentDay === '7/25') dayColIndex = 3;
+      else if (currentDay === '7/26') dayColIndex = 4;
+
+      const rows = document.querySelectorAll('.time-row');
+
+      rows.forEach(row => {
+        const start = row.dataset.start;
+        const end = row.dataset.end;
+        const [startH, startM] = start.split(":").map(Number);
+        const [endH, endM] = end.split(":").map(Number);
+        const startTimeVal = startH * 60 + startM;
+        const endTimeVal = endH * 60 + endM;
+
+        // Reset highlight
+        row.classList.remove('highlight-active-row');
+        const cells = row.querySelectorAll('td');
+        cells.forEach(cell => {
+          cell.classList.remove('text-red-600', 'ring-4', 'ring-rose-500/50', 'bg-yellow-100');
+        });
+
+        // If the current time fits this row's time span
+        if (currentTimeVal >= startTimeVal && currentTimeVal < endTimeVal) {
+          row.classList.add('highlight-active-row');
+          
+          // If we also match the actual Day column, flash the specific cell!
+          if (dayColIndex !== -1 && cells[dayColIndex]) {
+            cells[dayColIndex].classList.add('bg-yellow-100', 'text-red-600');
+            
+            // Insert a dynamic indicator if not present
+            if (!cells[dayColIndex].querySelector('.live-indicator')) {
+              const indicator = document.createElement('span');
+              indicator.className = 'live-indicator inline-flex items-center gap-1 bg-red-600 text-white text-[9px] px-1.5 py-0.5 rounded-full font-black ml-2 pulse-dot';
+              indicator.innerHTML = '<i class="fa-solid fa-satellite-dish"></i> LIVE';
+              cells[dayColIndex].appendChild(indicator);
+            }
+          }
+        } else {
+          // Remove leftover live indicators
+          const leftoverIndicator = cells[dayColIndex] ? cells[dayColIndex].querySelector('.live-indicator') : null;
+          if (leftoverIndicator) {
+            leftoverIndicator.remove();
+          }
+        }
+      });
+    }
+
+    // Helper Toast
+    function showToast(message, icon = "🛡️") {
+      const toast = document.getElementById('customToast');
+      document.getElementById('toastIcon').innerText = icon;
+      document.getElementById('toastMessage').innerText = message;
+
+      toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      }, 2500);
+    }
+  </script>
 </body>
 </html>
