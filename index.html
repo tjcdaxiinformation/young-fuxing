@@ -3,222 +3,337 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>復興福音的勇士 - 宣傳海報 (出圖版)</title>
+  <title>復興福音的勇士 - 宣傳海報</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
   
   <style>
     body {
       font-family: 'Noto Sans TC', sans-serif;
-      background-color: #f0f2f5;
+      background-color: #0f172a;
       margin: 0;
       padding: 0;
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      min-h: 100vh;
     }
     
-    /* 專業 A4 比例畫布，移除客製化面板，專注出圖 */
+    /* A4 海報畫布黃金比例 (1 : 1.414) */
     .a4-poster-canvas {
-      width: 210mm;
-      height: 297mm;
-      background: #000000; /* 海報深色背景 */
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 1 / 1.52;
+      background: linear-gradient(to bottom, #38bdf8 0%, #60a5fa 45%, #4338ca 100%);
       position: relative;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border-radius: 20px;
+      border: 4px solid #000000;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6), 10px 10px 0px #000000;
     }
 
-    /* 列印與 A4 完美適配 */
+    /* 列印專用 A4 適配 (Cmd + P) */
     @media print {
-      body { background: none; padding: 0; margin: 0; }
+      body { background: white !important; padding: 0 !important; margin: 0 !important; }
+      .no-print { display: none !important; }
       .a4-poster-canvas {
-        box-shadow: none;
-        border-radius: 0;
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
-        page-break-after: always;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        border: none !important;
+        width: 210mm !important;
+        height: 297mm !important;
+        max-width: none !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
       }
-      @page { size: A4; margin: 0; }
+      @page { size: A4 portrait; margin: 0; }
     }
 
-    /* 
-      視覺美學關鍵：斜體、黃金渐層、黑外框與重陰影大標題 
-      完美還原 680481.jpg 的文字動態
-    */
-    .poster-title-recreated {
+    /* 經典明體大標題：斜體、亮黃金漸層、黑描邊與落影 */
+    .poster-title-style {
       font-family: 'Noto Serif TC', serif;
       font-weight: 900;
       font-style: italic;
-      letter-spacing: -2px;
-      
-      background: linear-gradient(to bottom, #ffe082 0%, #ffc107 50%, #b388ff 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      
-      -webkit-text-stroke: 3px #000000; /* 經典黑外框 */
-      filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.8)); /* 立體陰影 */
+      color: #fde047;
+      -webkit-text-stroke: 2.5px #000000;
+      text-shadow: 4px 4px 0px #000000;
     }
 
-    .poster-subtitle-recreated {
+    .poster-subtitle-style {
       font-family: 'Noto Sans TC', sans-serif;
       font-weight: 900;
-      letter-spacing: 2px;
-      color: #FFFFFF;
-      -webkit-text-stroke: 1px #000000;
-      filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));
+      color: #ffffff;
+      -webkit-text-stroke: 1.5px #000000;
+      text-shadow: 2.5px 2.5px 0px #000000;
     }
 
-    /* 專業插畫風標籤：乾淨外框與小陰影 */
-    .illustration-label {
-      background: #FFFFFF;
-      border: 2px solid #000000;
-      color: #000000;
+    .label-badge {
+      background-color: #1e293b;
+      border: 2px solid #ffffff;
+      color: #ffffff;
       font-weight: 900;
-      border-radius: 8px;
-      box-shadow: 2px 2px 0px rgba(0,0,0,1);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      box-shadow: 2px 2px 0px #000000;
+    }
+
+    .text-stroke-clean {
+      -webkit-text-stroke: 2.5px #000000;
+      paint-order: stroke fill;
+      stroke-linejoin: round;
     }
   </style>
 </head>
-<body>
+<body class="p-2 md:p-6">
 
-  <!-- 全新的 A4 畫布，只包含海報出圖內容 -->
-  <div class="a4-poster-canvas">
+  <div class="a4-poster-canvas p-4 md:p-6 flex flex-col justify-between text-white select-none">
     
-    <!-- 
-      背景：還原動漫風爆發性的放射狀光芒 
-      從中心放射出的藍白色強光
-    -->
-    <div class="absolute inset-0 select-none">
-      <div class="absolute inset-0 bg-[#0ea5e9]"></div> <!-- 主藍色 -->
-      <div class="absolute inset-0" style="background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 30%, rgba(14,165,233,0) 100%);"></div>
-      
-      <!-- 動漫風放射線 SVG，確保爆發感 Select none so it won't be copied -->
-      <svg class="absolute inset-0 w-full h-full opacity-30 select-none" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <g stroke="#FFFFFF" stroke-width="0.3">
-          <line x1="50" y1="50" x2="0" y2="0"/>
-          <line x1="50" y1="50" x2="100" y2="0"/>
-          <line x1="50" y1="50" x2="100" y2="100"/>
-          <line x1="50" y1="50" x2="0" y2="100"/>
-          <line x1="50" y1="50" x2="25" y2="0"/>
-          <line x1="50" y1="50" x2="75" y2="0"/>
-          <line x1="50" y1="50" x2="100" y2="25"/>
-          <line x1="50" y1="50" x2="100" y2="75"/>
-        </g>
-      </svg>
-    </div>
+    <!-- 背景放射光芒點綴 -->
+    <div class="absolute inset-0 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:20px_26px] opacity-15 pointer-events-none"></div>
+    <div class="absolute top-[45%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[550px] bg-white rounded-full blur-[100px] opacity-35 pointer-events-none"></div>
 
-    <!-- 
-      主標題群組：專業斜體與漸層 
-    -->
-    <div class="relative z-10 text-center transform -skew-y-1 mt-10 space-y-2">
-      <h1 class="poster-title-recreated text-6xl">
+    <!-- 頂部標題區 -->
+    <div class="text-center relative z-20 space-y-1 transform -skew-y-1 mt-1">
+      <h1 class="poster-title-style text-4xl md:text-5xl tracking-tight">
         復興福音的勇士
       </h1>
-      <p class="poster-subtitle-recreated text-2xl uppercase">
+      <p class="poster-subtitle-style text-base md:text-lg tracking-widest uppercase">
         REVIVAL! GOSPEL WARRIORS
       </p>
-    </div>
 
-    <!-- 
-      中央插畫區域：專業動漫風格插畫，完全還原 680481.jpg 
-      具有細緻光影與立體感的插畫勇士與會堂
-    -->
-    <div class="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] h-[60%] select-none z-0">
-      <img src="https://image-gen.com/w/recreated_anime_warrior_gospel_with_church.png" 
-           alt="動漫插畫：福音勇士、會堂、現代建築與放射線"
-           class="w-full h-full object-contain filter drop-shadow(0 15px 15px rgba(0,0,0,0.6))">
-    </div>
-
-    <!-- 
-      專業插畫外掛標籤：乾淨黑外框 
-      移除原本的幾何感，專注乾淨的出圖效果
-    -->
-    <div class="relative z-20 w-full h-full select-none">
-      
-      <!-- 頂部膠囊標籤 -->
-      <div class="flex justify-center gap-2 mt-4">
-        <span class="bg-black/70 text-white illustration-label text-xs font-black px-3 py-1 rounded-full whitespace-nowrap">
+      <!-- 標籤膠囊：使用神字版譯本 -->
+      <div class="flex justify-center gap-2 mt-2">
+        <span class="label-badge transform -rotate-2">
           復興小區的復興
         </span>
-        <span class="bg-black/70 text-white illustration-label text-xs font-black px-3 py-1 rounded-full whitespace-nowrap">
-          穿戴神所賜的全副屬靈軍裝，做基督的精兵！
+        <span class="label-badge transform rotate-1">
+          穿戴神所賜的全副屬靈軍裝
         </span>
-      </div>
-
-      <!-- 文字註解與箭頭群組：全部修正為神聖稱呼「神」 -->
-      <!-- 救恩頭盔 -->
-      <div class="absolute top-[28%] left-[68%] illustration-label text-xs px-2 py-1 flex items-center gap-1">
-        <div class="w-2 h-2 rounded-full bg-black"></div>
-        <span>頭盔</span>
-      </div>
-      
-      <!-- 符合青少年基督徒的勇士 (右側描述卡片) -->
-      <div class="absolute top-[38%] left-[73%] bg-white border-2 border-black rounded-lg p-2 text-black w-32 shadow-[2px_2px_0px_rgba(0,0,0,1)] text-center">
-        <p class="text-[10px] font-black leading-tight">符合青少年</p>
-        <p class="text-[10px] font-black leading-tight">基督徒的勇士</p>
-      </div>
-
-      <!-- 公義胸甲 -->
-      <div class="absolute top-[32%] left-[28%] illustration-label text-xs px-2 py-1 flex items-center gap-1">
-        <div class="w-2 h-2 rounded-full bg-black"></div>
-        <span>胸甲</span>
-      </div>
-
-      <!-- 真理腰帶 -->
-      <div class="absolute top-[48%] left-[30%] illustration-label text-xs px-2 py-1 flex items-center gap-1">
-        <div class="w-2 h-2 rounded-full bg-black"></div>
-        <span>腰帶</span>
-      </div>
-
-      <!-- 聖靈光劍 -->
-      <div class="absolute top-[52%] left-[16%] illustration-label text-xs px-2 py-1 flex items-center gap-1">
-        <div class="w-2 h-2 rounded-full bg-black"></div>
-        <span>聖靈的劍</span>
-      </div>
-
-      <!-- 福音鞋 -->
-      <div class="absolute top-[68%] left-[70%] illustration-label text-xs px-2 py-1 flex items-center gap-1">
-        <div class="w-2 h-2 rounded-full bg-black"></div>
-        <span>福音鞋</span>
       </div>
     </div>
 
-    <!-- 
-      底部醒目資訊卡：專業插畫排版，還原 680481.jpg 
-    -->
-    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 w-[90%] bg-white/10 border-4 border-black rounded-3xl p-5 relative z-10 grid grid-cols-3 gap-4 shadow-[6px_6px_0px_rgba(0,0,0,1)]">
+    <!-- 中央插畫區 (100% 內建向量 SVG，絕無破圖風險) -->
+    <div class="my-1 relative flex items-center justify-center flex-grow min-h-[350px]">
       
-      <!-- 佈道會資訊 (水藍色卡片) -->
-      <div class="bg-[#81d4fa] text-slate-900 border-2 border-black rounded-xl p-3 flex flex-col items-center text-center shadow-[3px_3px_0px_rgba(0,0,0,1)]">
-        <span class="text-xl mb-1"><i class="fa-solid fa-microphone-lines"></i></span>
+      <svg class="w-full h-full max-h-[450px] z-10" viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+          <marker id="pointer-dot" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6">
+            <circle cx="5" cy="5" r="4" fill="black" stroke="white" stroke-width="1.5"/>
+          </marker>
+        </defs>
+
+        <!-- 放射能量背景線 -->
+        <g opacity="0.35">
+          <polygon points="250,240 0,160 0,120" fill="#FFF"/>
+          <polygon points="250,240 100,0 150,0" fill="#FFF"/>
+          <polygon points="250,240 350,0 400,0" fill="#FFF"/>
+          <polygon points="250,240 500,160 500,120" fill="#FFF"/>
+          <polygon points="250,240 500,320 500,360" fill="#FFF"/>
+          <polygon points="250,240 0,320 0,360" fill="#FFF"/>
+        </g>
+
+        <!-- 左側：現代會堂建築 -->
+        <g transform="translate(10, 160)" opacity="0.85">
+          <polygon points="45,40 60,0 75,40" fill="#475569" stroke="#000" stroke-width="1.5"/>
+          <line x1="60" y1="-12" x2="60" y2="8" stroke="#DC2626" stroke-width="3"/>
+          <line x1="52" y1="-4" x2="68" y2="-4" stroke="#DC2626" stroke-width="3"/>
+          <rect x="45" y="40" width="30" height="100" fill="#F1F5F9" stroke="#000" stroke-width="2"/>
+          <rect x="5" y="80" width="110" height="60" fill="#E2E8F0" stroke="#000" stroke-width="2" rx="4"/>
+          <polygon points="-5,80 60,45 125,80" fill="#334155" stroke="#000" stroke-width="2"/>
+          <path d="M20 100 A 8 8 0 0 1 36 100 L 34 130 L 20 130 Z" fill="#FDE047" stroke="#000" stroke-width="1.2"/>
+          <path d="M84 100 A 8 8 0 0 1 100 100 L 100 130 L 84 130 Z" fill="#FDE047" stroke="#000" stroke-width="1.2"/>
+        </g>
+
+        <!-- 右側：城市現代高樓 -->
+        <g transform="translate(370, 170)" opacity="0.85">
+          <rect x="15" y="40" width="95" height="110" fill="#E2E8F0" stroke="#000" stroke-width="2" rx="4"/>
+          <rect x="25" y="55" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
+          <rect x="55" y="55" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
+          <rect x="25" y="85" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
+          <rect x="55" y="85" width="20" height="20" fill="#38BDF8" stroke="#000" stroke-width="1"/>
+          <rect x="25" y="115" width="20" height="30" fill="#475569" stroke="#000" stroke-width="1"/>
+          <rect x="55" y="115" width="20" height="30" fill="#475569" stroke="#000" stroke-width="1"/>
+        </g>
+
+        <!-- 英雄信仰底座 -->
+        <ellipse cx="250" cy="425" rx="140" ry="25" fill="#1E293B" stroke="#000" stroke-width="3"/>
+        <ellipse cx="250" cy="420" rx="130" ry="20" fill="#475569" stroke="#94A3B8" stroke-width="2"/>
+        <ellipse cx="250" cy="416" rx="110" ry="15" fill="#64748B" />
+
+        <!-- 青少年福音勇士人物角色 -->
+        <g id="hero-character" transform="translate(250, 240)">
+          
+          <!-- 飄逸紅斗篷 -->
+          <path d="M-25 -50 L-95 65 L95 105 L25 -50 Z" fill="#DC2626" stroke="#000" stroke-width="2.5"/>
+          <path d="M-25 -50 L-55 105 L-20 105 Z" fill="#991B1B" />
+          <path d="M25 -50 L55 105 L20 105 Z" fill="#991B1B" />
+
+          <!-- 牛仔褲與雙腿 -->
+          <rect x="-18" y="45" width="12" height="110" fill="#1E3A8A" stroke="#000" stroke-width="2"/>
+          <rect x="6" y="45" width="12" height="110" fill="#1E3A8A" stroke="#000" stroke-width="2"/>
+
+          <!-- 潮流高筒福音球鞋 (左腳) -->
+          <g transform="translate(-20, 140)">
+            <path d="M-18 20 L8 20 L8 32 L-22 32 Z" fill="#FFF" stroke="#000" stroke-width="2"/>
+            <path d="M-16 28 L6 28 L6 32 L-18 32 Z" fill="#EA580C" />
+            <path d="M-18 0 C-18 0 8 5 8 20 L-18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
+            <path d="M-16 4 Q-6 6 -2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
+            <path d="M-10 10 L4 10 M-8 14 L2 14" stroke="#FFF" stroke-width="1.5"/>
+          </g>
+          <!-- 潮流高筒福音球鞋 (右腳) -->
+          <g transform="translate(6, 140)">
+            <path d="M-8 20 L18 20 L22 32 L-8 32 Z" fill="#FFF" stroke="#000" stroke-width="2"/>
+            <path d="M-6 28 L16 28 L18 32 L-6 32 Z" fill="#EA580C" />
+            <path d="M18 0 C18 0 -8 5 -8 20 L18 20 Z" fill="#1D4ED8" stroke="#000" stroke-width="2"/>
+            <path d="M16 4 Q6 6 2 18" stroke="#FFF" stroke-width="2.5" fill="none"/>
+            <path d="M10 10 L-4 10 M8 14 L-2 14" stroke="#FFF" stroke-width="1.5"/>
+          </g>
+
+          <!-- 軀幹、公義胸甲與真理腰帶 -->
+          <rect x="-24" y="-30" width="48" height="85" fill="#38BDF8" stroke="#000" stroke-width="2" rx="4"/>
+          <path d="M-22 -28 L22 -28 L18 40 L-18 40 Z" fill="#CBD5E1" stroke="#000" stroke-width="2"/>
+          <path d="M-10 -15 L-10 20 M10 -15 L10 20" stroke="#94A3B8" stroke-width="2"/>
+          <!-- 真理腰帶 -->
+          <rect x="-25" y="38" width="50" height="12" fill="#78350F" stroke="#000" stroke-width="2"/>
+          <rect x="-7" y="35" width="14" height="18" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
+          <!-- 神的話語卷軸 -->
+          <g transform="translate(18, 48)">
+            <rect x="0" y="0" width="14" height="30" fill="#FEF08A" stroke="#000" stroke-width="1.5" rx="3" transform="rotate(15)"/>
+            <text x="7" y="16" fill="#78350F" font-size="7" font-weight="900" text-anchor="middle" transform="rotate(15)">Word</text>
+          </g>
+
+          <!-- 頭部、動漫神情與救恩頭盔 -->
+          <circle cx="0" cy="-60" r="23" fill="#FDBA74" stroke="#000" stroke-width="2"/>
+          <ellipse cx="-8" cy="-62" rx="3.5" ry="5.5" fill="#000"/>
+          <ellipse cx="8" cy="-62" rx="3.5" ry="5.5" fill="#000"/>
+          <circle cx="-9" cy="-64" r="1.5" fill="#FFF"/>
+          <circle cx="7" cy="-64" r="1.5" fill="#FFF"/>
+          <path d="M-7 -50 Q0 -43 7 -50" stroke="#000" stroke-width="3" fill="none"/>
+          <!-- 帥氣髮型 -->
+          <path d="M-22 -60 L-27 -50 L-15 -55 L-20 -40 L-8 -51 L0 -40 L8 -51 L20 -40 L15 -55 L27 -50 L22 -60 Z" fill="#1E293B" stroke="#000" stroke-width="1.5"/>
+          <path d="M-15 -77 L-24 -65 L-10 -71 L-4 -63 L4 -63 L10 -71 L24 -65 L15 -77 Z" fill="#1E293B"/>
+          <!-- 救恩頭盔 -->
+          <path d="M-24 -69 C-24 -100 24 -100 24 -69 Z" fill="#94A3B8" stroke="#000" stroke-width="2"/>
+          <path d="M-24 -69 L24 -69 L0 -58 Z" fill="#475569" stroke="#000" stroke-width="2"/>
+          <!-- 頭盔紅纓頂飾 -->
+          <path d="M-6 -95 Q0 -125 24 -115 Q12 -97 -2 -95" fill="#EF4444" stroke="#000" stroke-width="1.5"/>
+
+          <!-- 左手：信心的盾牌 (寫有「信」、「心」兩個中文大字) -->
+          <rect x="20" y="-15" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(20 20 -15)"/>
+          <g transform="translate(54, -15)">
+            <path d="M-35 -40 L35 -40 C35 -40 35 25 0 60 C-35 25 -35 -40 -35 -40 Z" fill="#D97706" stroke="#000" stroke-width="3.5"/>
+            <path d="M-27 -34 L27 -34 C27 -34 27 18 0 49 C-27 18 -27 -34 -27 -34 Z" fill="#FEF08A" stroke="#000" stroke-width="2"/>
+            <line x1="0" y1="-30" x2="0" y2="40" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
+            <line x1="-20" y1="-10" x2="20" y2="-10" stroke="#EA580C" stroke-width="3" opacity="0.3"/>
+            <!-- 十字架襯底 -->
+            <path d="M-4 -30 L4 -30 L4 35 L-4 35 Z" fill="#EA580C" opacity="0.3"/>
+            <path d="M-20 -14 L20 -14 L20 -6 L-20 -6 Z" fill="#EA580C" opacity="0.3"/>
+            <!-- 端莊明體「信」、「心」大字 -->
+            <text x="-12" y="8" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC">信</text>
+            <text x="12" y="8" fill="#000" font-size="16" font-weight="950" text-anchor="middle" font-family="Noto Serif TC">心</text>
+          </g>
+
+          <!-- 右手：聖靈的劍 (帶有電弧光暈) -->
+          <rect x="-40" y="-15" width="25" height="11" fill="#94A3B8" stroke="#000" stroke-width="2" transform="rotate(-20 -40 -15)"/>
+          <g transform="translate(-54, -20) rotate(-30)">
+            <rect x="-14" y="-4" width="28" height="8" fill="#F59E0B" stroke="#000" stroke-width="2" rx="2"/>
+            <rect x="-4" y="4" width="8" height="20" fill="#78350F" stroke="#000" stroke-width="2"/>
+            <circle cx="0" cy="24" r="5" fill="#F59E0B" stroke="#000" stroke-width="1.5"/>
+            <polygon points="-5,-4 -4,-135 0,-150 4,-135 5,-4" fill="#E0F2FE" stroke="#0EA5E9" stroke-width="2.5" filter="url(#glow)"/>
+            <line x1="0" y1="-4" x2="0" y2="-140" stroke="#38BDF8" stroke-width="2"/>
+            <!-- 能量電弧 spark -->
+            <path d="M-15 -90 L-10 -95 L-12 -105 L-5 -98" stroke="#38BDF8" stroke-width="1.5" fill="none"/>
+            <path d="M15 -70 L10 -75 L12 -85 L5 -78" stroke="#38BDF8" stroke-width="1.5" fill="none"/>
+          </g>
+
+        </g>
+
+        <!-- 指示線與標註點 -->
+        <g stroke="#000000" stroke-width="2" fill="none" marker-end="url(#pointer-dot)">
+          <path d="M 315, 135 L 255, 155"/> <!-- 頭盔 -->
+          <path d="M 180, 210 L 225, 230"/> <!-- 胸甲 -->
+          <path d="M 195, 280 L 235, 280"/> <!-- 腰帶 -->
+          <path d="M 140, 310 L 175, 310"/> <!-- 聖靈的劍 -->
+          <path d="M 360, 370 L 320, 370"/> <!-- 福音鞋 -->
+        </g>
+
+        <!-- 標籤卡片 (黑邊白底重陰影) -->
+        <!-- 頭盔 -->
+        <g transform="translate(320, 120)">
+          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">頭盔</text>
+        </g>
+        <!-- 胸甲 -->
+        <g transform="translate(130, 198)">
+          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">胸甲</text>
+        </g>
+        <!-- 腰帶 -->
+        <g transform="translate(145, 268)">
+          <rect x="0" y="0" width="45" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="22.5" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">腰帶</text>
+        </g>
+        <!-- 聖靈的劍 -->
+        <g transform="translate(55, 298)">
+          <rect x="0" y="0" width="80" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="40" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">聖靈的劍</text>
+        </g>
+        <!-- 福音鞋 -->
+        <g transform="translate(365, 358)">
+          <rect x="0" y="0" width="60" height="24" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="4" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="30" y="16" fill="#000000" font-size="11" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">福音鞋</text>
+        </g>
+        
+        <!-- 符合青少年基督徒的勇士 -->
+        <g transform="translate(340, 175)">
+          <rect x="0" y="0" width="130" height="32" fill="#FFFFFF" stroke="#000000" stroke-width="2" rx="6" filter="drop-shadow(2px 2px 0px #000)"/>
+          <text x="65" y="15" fill="#000000" font-size="10" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">符合青少年</text>
+          <text x="65" y="26" fill="#000000" font-size="10" font-weight="900" text-anchor="middle" font-family="Noto Sans TC">基督徒的勇士</text>
+        </g>
+
+      </svg>
+
+    </div>
+
+    <!-- 底部資訊卡 Deck -->
+    <div class="bg-indigo-950/80 border-4 border-black rounded-3xl p-3 relative z-20 grid grid-cols-3 gap-2.5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)]">
+      
+      <!-- 卡片 1: 詩歌佈道會 (淡藍色) -->
+      <div class="bg-[#80d8ff] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-2.5 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <span class="text-base md:text-lg text-slate-900 mb-0.5"><i class="fa-solid fa-music"></i></span>
         <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">詩歌佈道會</h4>
-        <p class="text-sm font-black mt-1 leading-none">7/26 19:00~20:30</p>
-        <p class="text-[10px] font-bold mt-1 text-slate-800">《主默然愛你》</p>
+        <p class="text-[11px] md:text-xs font-black mt-1 leading-tight">7/26 19:00~20:30</p>
+        <p class="text-[10px] md:text-[11px] font-extrabold text-indigo-900 mt-0.5 leading-none truncate w-full">《主默然愛你》</p>
       </div>
 
-      <!-- 營會時間 (珊瑚粉色卡片) -->
-      <div class="bg-[#ef9a9a] text-slate-900 border-2 border-black rounded-xl p-3 flex flex-col items-center text-center shadow-[3px_3px_0px_rgba(0,0,0,1)]">
-        <span class="text-xl mb-1"><i class="fa-solid fa-clock"></i></span>
+      <!-- 卡片 2: 營會時間 (珊瑚粉) -->
+      <div class="bg-[#ff8a80] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-clock"></i></span>
         <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">營會時間</h4>
-        <p class="text-xl font-black mt-1 leading-none">7/23~26</p>
+        <p class="text-base md:text-lg font-black mt-1 leading-none">7/23~26</p>
       </div>
 
-      <!-- 地點 (粉綠色卡片) -->
-      <div class="bg-[#a5d6a7] text-slate-900 border-2 border-black rounded-xl p-3 flex flex-col items-center shadow-[3px_3px_0px_rgba(0,0,0,1)]">
-        <div class="w-full flex flex-col items-center">
-          <span class="text-xl mb-1"><i class="fa-solid fa-map-location-dot"></i></span>
-          <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">地點</h4>
+      <!-- 卡片 3: 地點 (薄荷綠) -->
+      <div class="bg-[#b9f6ca] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+        <div class="flex flex-col items-center w-full">
+          <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-map-location-dot"></i></span>
+          <h4 class="text-[10px] font-black opacity-80 uppercase leading-none text-center">地點</h4>
         </div>
-        <div class="text-[10px] font-black text-slate-900 mt-1 space-y-0.5 truncate w-full text-center">
+        <div class="text-[9px] md:text-[11px] font-black text-slate-900 mt-1 space-y-0.5 w-full text-center truncate">
           <div>大灣教會</div>
-          <div class="flex items-center justify-center gap-0.5 text-rose-600">
+          <div class="flex items-center justify-center gap-0.5 text-rose-600 font-extrabold">
             📍<span>羅浮居民會館</span>
           </div>
         </div>
       </div>
+
     </div>
 
   </div>
