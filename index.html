@@ -113,8 +113,12 @@
           <input type="text" id="input-subtitle" oninput="updatePosterText()" value="REVIVAL! GOSPEL WARRIORS" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-300 mb-1">報名期限</label>
-          <input type="text" id="input-deadline" oninput="updatePosterText()" value="7/11" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+          <label class="block text-xs font-bold text-slate-300 mb-1">詩歌佈道會時間</label>
+          <input type="text" id="input-ev-time" oninput="updatePosterText()" value="7/26 19:00~20:30" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">詩歌佈道會主題</label>
+          <input type="text" id="input-ev-theme" oninput="updatePosterText()" value="主默然愛你" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-yellow-400">
         </div>
         <div>
           <label class="block text-xs font-bold text-slate-300 mb-1">時間</label>
@@ -381,17 +385,18 @@
         <!-- Bottom Layout: Highly recognizable metadata card deck inside a dark border container -->
         <div class="bg-indigo-950/80 border-4 border-black rounded-3xl p-3 relative z-10 grid grid-cols-3 gap-2.5 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] select-none">
           
-          <!-- Column 1: Deadline (Sky Blue Card) -->
-          <div class="bg-[#80d8ff] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
-            <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-calendar-check"></i></span>
-            <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">報名期限</h4>
-            <p id="poster-deadline" class="text-base md:text-lg font-black mt-1 leading-none">7/11</p>
+          <!-- Column 1: Hymn Evangelistic Service (Sky Blue Card) -->
+          <div class="bg-[#80d8ff] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-2.5 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
+            <span class="text-base md:text-lg text-slate-900 mb-0.5"><i class="fa-solid fa-music"></i></span>
+            <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">詩歌佈道會</h4>
+            <p id="poster-ev-time" class="text-[11px] md:text-xs font-black mt-1 leading-tight">7/26 19:00~20:30</p>
+            <p id="poster-ev-theme" class="text-[10px] md:text-[11px] font-extrabold text-indigo-900 mt-0.5 leading-none truncate w-full">《主默然愛你》</p>
           </div>
 
           <!-- Column 2: Date (Coral/Peach Card) -->
           <div class="bg-[#ff8a80] text-slate-900 border-2 border-black rounded-2xl p-2 md:p-3 flex flex-col items-center justify-center text-center shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]">
             <span class="text-lg md:text-xl text-slate-900 mb-0.5"><i class="fa-solid fa-clock"></i></span>
-            <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">時間</h4>
+            <h4 class="text-[10px] font-black opacity-80 uppercase leading-none">營會時間</h4>
             <p id="poster-dates" class="text-base md:text-lg font-black mt-1 leading-none">7/23~26</p>
           </div>
 
@@ -423,7 +428,8 @@
       // Input values
       const title = document.getElementById('input-title').value;
       const subtitle = document.getElementById('input-subtitle').value;
-      const deadline = document.getElementById('input-deadline').value;
+      const evTime = document.getElementById('input-ev-time').value;
+      const evTheme = document.getElementById('input-ev-theme').value;
       const dates = document.getElementById('input-dates').value;
       const loc1 = document.getElementById('input-loc1').value;
       const loc2 = document.getElementById('input-loc2').value;
@@ -431,35 +437,12 @@
       // Update HTML content inside poster
       document.getElementById('poster-title').innerText = title;
       document.getElementById('poster-subtitle').innerText = subtitle;
-      document.getElementById('poster-deadline').innerText = deadline;
+      document.getElementById('poster-ev-time').innerText = evTime;
+      document.getElementById('poster-ev-theme').innerText = evTheme.startsWith('《') ? evTheme : `《${evTheme}》`;
       document.getElementById('poster-dates').innerText = dates;
       document.getElementById('poster-loc1').innerText = loc1;
       document.getElementById('poster-loc2').innerText = loc2;
     }
 
     // Dynamic theme colors swapper
-    function changeTheme(theme) {
-      const poster = document.getElementById('posterContainer');
-      const btnOrange = document.getElementById('theme-orange-btn');
-      const btnBlue = document.getElementById('theme-blue-btn');
-      const btnGreen = document.getElementById('theme-green-btn');
-
-      // Clear previous active button highlights
-      btnOrange.className = "py-2.5 rounded-xl border-2 border-transparent bg-gradient-to-r from-amber-500 to-rose-500 text-xs font-bold hover:border-amber-400 transition-all";
-      btnBlue.className = "py-2.5 rounded-xl border-2 border-transparent bg-gradient-to-r from-blue-600 to-indigo-800 text-xs font-bold hover:border-indigo-400 transition-all";
-      btnGreen.className = "py-2.5 rounded-xl border-2 border-transparent bg-gradient-to-r from-emerald-600 to-teal-800 text-xs font-bold hover:border-emerald-400 transition-all";
-
-      if (theme === 'orange') {
-        poster.className = "w-full max-w-[500px] a4-poster-box rounded-3xl bg-gradient-to-b from-[#38bdf8] via-[#60a5fa] to-[#4338ca] p-5 flex flex-col justify-between text-white relative overflow-hidden print-fullscreen border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]";
-        btnOrange.className = "py-2.5 rounded-xl border-2 border-amber-400 bg-gradient-to-r from-amber-500 to-rose-500 text-xs font-bold shadow-lg transition-all transform scale-105";
-      } else if (theme === 'blue') {
-        poster.className = "w-full max-w-[500px] a4-poster-box rounded-3xl bg-gradient-to-b from-[#1e40af] via-[#3b82f6] to-[#1e1b4b] p-5 flex flex-col justify-between text-white relative overflow-hidden print-fullscreen border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]";
-        btnBlue.className = "py-2.5 rounded-xl border-2 border-indigo-400 bg-gradient-to-r from-blue-600 to-indigo-800 text-xs font-bold shadow-lg transition-all transform scale-105";
-      } else if (theme === 'green') {
-        poster.className = "w-full max-w-[500px] a4-poster-box rounded-3xl bg-gradient-to-b from-[#065f46] via-[#10b981] to-[#022c22] p-5 flex flex-col justify-between text-white relative overflow-hidden print-fullscreen border-4 border-black shadow-[10px_10px_0px_0px_rgba(0,0,0,1)]";
-        btnGreen.className = "py-2.5 rounded-xl border-2 border-emerald-400 bg-gradient-to-r from-emerald-600 to-teal-800 text-xs font-bold shadow-lg transition-all transform scale-105";
-      }
-    }
-  </script>
-</body>
-</html>
+<!-- ... existing code -->
